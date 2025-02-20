@@ -1,0 +1,85 @@
+# Git Commands Cheat Sheet
+
+This is a quick reference for common Git commands. You can refer to this file whenever you need to remember a command.
+
+## Basic Git Commands
+- `git init`: Initialize a new Git repository.
+- `git clone <repository_url>`: Clone an existing repository.
+- `git status`: Check the status of your working directory and staging area.
+- `git add <file>`: Stage a file for commit.
+- `git add .`: Stage all modified files.
+- `git commit -m "<message>"`: Commit the staged changes with a message.
+- `git commit -a -m "<message>"`: Commit all changes to tracked files (stages and commits in one step).
+- `git log`: View commit history.
+- `git diff`: Show differences between working directory and staged files.
+
+## Branching Commands
+- `git branch`: List all branches.
+- `git branch <branch_name>`: Create a new branch.
+- `git checkout <branch_name>`: Switch to another branch.
+- `git checkout -b <branch_name>`: Create and switch to a new branch.
+- `git merge <branch_name>`: Merge a branch into the current branch.
+- `git branch -d <branch_name>`: Delete a branch.
+
+## Remote Repository Commands
+- `git remote -v`: List all remote repositories.
+- `git remote add <name> <repository_url>`: Add a remote repository.
+- `git fetch`: Fetch updates from a remote repository (no merge).
+- `git pull`: Fetch and merge changes from a remote repository.
+- `git push`: Push commits to a remote repository.
+- `git push <remote> <branch_name>`: Push a specific branch to a remote repository.
+- `git push --force`: Force push (use with caution).
+
+## Undoing Changes
+- `git reset <file>`: Unstage a file.
+- `git reset --hard`: Reset changes in the working directory and staging area.
+- `git checkout -- <file>`: Discard changes in the working directory.
+- `git revert <commit_id>`: Revert a commit by creating a new commit.
+- `git clean -f`: Remove untracked files.
+- `git rm <file>`: Remove a file from both the working directory and staging area.
+
+## Tagging Commands
+- `git tag`: List all tags.
+- `git tag <tag_name>`: Create a new tag.
+- `git tag -a <tag_name> -m "<message>"`: Create an annotated tag with a message.
+- `git push origin <tag_name>`: Push a specific tag to a remote repository.
+- `git push --tags`: Push all tags to the remote repository.
+
+## Stashing Commands
+- `git stash`: Save changes temporarily.
+- `git stash pop`: Apply the most recent stash and remove it.
+- `git stash list`: List all stashed changes.
+- `git stash apply`: Apply a stash without removing it.
+- `git stash drop`: Delete a stash.
+
+## Other Useful Commands
+- `git show <commit_id>`: Display information about a specific commit.
+- `git reflog`: View the reference log (all previous Git operations).
+- `git cherry-pick <commit_id>`: Apply a specific commit from another branch.
+- `git bisect`: Use binary search to find the commit that introduced a bug.
+- `git config --global user.name "Your Name"`: Set the global username.
+- `git config --global user.email "your_email@example.com"`: Set the global user email.
+- `git diff <commit_id> <commit_id>`: Show the differences between two commits.
+
+## Extra Tips
+- `git commit -m "<message>" --amend`: Amend the last commit (can be useful to fix commit messages).
+- `git push origin --delete <branch_name>`: Delete a branch on the remote repository.
+- `git fetch --all`: Fetch all updates from all remotes.
+- `git pull --rebase`: Fetch and rebase changes (instead of merging).
+- `git config --global core.editor <editor>`: Set your preferred text editor for Git (e.g., `git config --global core.editor "code --wait"` for VS Code).
+- `git help`: Shows help for Git commands (e.g., `git help <command>`).
+- `git --version`: Display the version of Git installed.
+- `git config --list`: Show all Git configuration settings.
+- `git help <command>`: Display help for a specific Git command (e.g., `git help commit`).
+- `git grep <pattern>`: Search for a pattern in the repository (e.g., `git grep 'function'`).
+- `git ls-files`: List files in the repository (can help when dealing with untracked files).
+- `git remote show <remote>`: Show detailed information about a remote (e.g., `git remote show origin`).
+- `git shortlog`: Summarize commits by author, often used for generating release notes.
+- `git log --oneline`: View a compressed, single-line version of the commit log.
+- `git stash save <message>`: Stash changes with a custom message.
+- `git reset <commit_id>`: Reset to a specific commit (with or without affecting the working directory).
+- `git cherry-pick -n <commit_id>`: Apply a commit without committing it (useful for testing changes).
+
+---
+
+For more information on any command, visit the official [Git documentation](https://git-scm.com/doc).

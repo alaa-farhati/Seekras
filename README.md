@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+# Seekras - Project Overview
+## 📌 Phase 1 (Initial Launch)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### Feed
+- Create groups (subreddits)
+- Join groups & interact with posts (like, comment, report)
+- Infinite scroll with "Your Friends' Posts" and "Suggestions for You"
+- Support for videos & images in posts
+- Nested comments (comments on comments)
 
-## Get started
+### Marketplace
+- List items with categories
+- View all products & interact (reviews, purchases, chat with sellers)
 
-1. Install dependencies
+### Chat
+- Send & receive messages, emojis, and reactions
+- Support for both individual and group chats
 
-   ```bash
-   npm install
-   ```
+### Profile
+- View your profile & follow other users (friend requests system)
+- Others can follow you
 
-2. Start the app
+### Reporting System
+- Users can report posts & comments for moderation
 
-   ```bash
-    npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+## 🔑 Authentication
+- Sign up / Sign in with:
+  - Google
+  - Facebook
+  - Email & password
+- Email OTP verification (via Nodemailer) <<for the second phase of the app>>
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🛠️ Tech Stack
+- **Frontend:** Expo React Native
+- **Backend:** Custom backend (not Firebase)
+- **Database:** Prisma with PostgreSQL
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📢 Collaboration
+- Add teammates as collaborators in GitHub
+- Follow Git branching strategy:
+  - `main` → stable production
+  - `test` → for testing
+  - `dev` → development
+  - `feature/xyz` → feature-specific branches
 
-## Get a fresh project
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
+## 📌
+ Phase 2 (Post-Launch Updates)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Event Creation
+- Centers & guides can create events with full details
 
-## Learn more
+### Maps
+- Real-time user tracking
+- Users can save & share walking paths
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Online Payments (Still under discussion)

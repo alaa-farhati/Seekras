@@ -39,7 +39,8 @@
 ## 📢 Collaboration
 - Add teammates as collaborators in GitHub
 - Follow Git branching strategy:
-  - `main` → stable production
+  - `main` → production
+  - `release` → release/1.0.0 (preparing for the 1.0.0 release)
   - `test` → for testing
   - `dev` → development
   - `feature/xyz` → feature-specific branches

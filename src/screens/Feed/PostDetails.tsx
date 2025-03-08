@@ -1,12 +1,26 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-const PostDetails = () => {
+const CreatePostScreen: React.FC = () => {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Post Details Screen</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Create Post</Text>
+      {/* You can add input fields or buttons later */}
     </View>
   );
 };
 
-export default PostDetails;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5", // You can change the background color
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+});
+
+export default CreatePostScreen;

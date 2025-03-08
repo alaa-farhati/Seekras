@@ -1,23 +1,40 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MainTabs } from './MainTabs';
+import { AppStackParamList } from '../types/navigation';
+import MainTabs from './MainTabs';
 import Profile from '../screens/Profile/Profile';
+import Feed from '../screens/Feed/Feed';
 import Settings from '../screens/Settings/Settings';
-import { Text } from 'react-native';
+import ChatDetails from '../screens/Chat/ChatDetails';
 
-const AppStack = createNativeStackNavigator();
+
+const AppStack = createNativeStackNavigator<AppStackParamList>();  // Type the navigator
 
 export function AppNavigator() {
   return (
     <AppStack.Navigator>
-      <AppStack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
-      <AppStack.Screen name="Profile" component={Profile} />
-      <AppStack.Screen 
-        name="Settings" 
-        component={Settings} 
-        options={({ navigation }) => ({
-          presentation: "modal",
-          headerRight: () => <Text onPress={navigation.goBack}>Close</Text>,
-        })} 
+      <AppStack.Screen
+        name="MainTabs"
+        component={MainTabs}
+        options={{ headerShown: false }} // Hide header for MainTabs
+      />
+      <AppStack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }} // Hide header for Profile screen
+      />
+      <AppStack.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          headerShown: false, // Hide header for Settings screen
+        }}
+      />
+       <AppStack.Screen
+        name="ChatDetails"
+        component={ChatDetails}
+        options={{
+          headerShown: false, // Hide header for Settings screen
+        }}
       />
     </AppStack.Navigator>
   );

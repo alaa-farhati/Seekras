@@ -2,19 +2,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthNavigator } from './AuthNavigator';
 import { AppNavigator } from './AppNavigator';
-
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
+import { ThemeProvider } from '../context/themeContext';  // Import your ThemeProvider
+import { RootStackParamList } from '../types/navigation';
 
-const RootStack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator<RootStackParamList>();  // Type the navigator
 
 export function RootNavigator() {
-  
   const [appIsReady, setAppIsReady] = useState(false);
 
   useEffect(() => {
     async function prepare() {
-      // Simulating any async loading before showing the app
+      // Simulating async loading (e.g., fetching token or checking login status)
       await new Promise(resolve => setTimeout(resolve, 500)); 
       setAppIsReady(true);
       await SplashScreen.hideAsync();
@@ -23,22 +23,24 @@ export function RootNavigator() {
   }, []);
 
   if (!appIsReady) {
-    return null; // Keep the splash screen until the app is ready
+    return null; // Show splash screen while the app is preparing
   }
 
   return (
-    <NavigationContainer
-      onReady={() => {
-        SplashScreen.hideAsync(); // Hide splash screen once navigation is ready
-      }}
-    >
-      <RootStack.Navigator screenOptions={{ headerShown: false }}>
-        {true ? (
-          <RootStack.Screen name="App" component={AppNavigator} />
-        ) : (
-          <RootStack.Screen name="Auth" component={AuthNavigator} />
-        )}
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <ThemeProvider>  
+      <NavigationContainer
+        onReady={() => {
+          SplashScreen.hideAsync(); // Hide splash screen once navigation is ready
+        }}
+      >
+        <RootStack.Navigator screenOptions={{ headerShown: false }}>
+         
+            <RootStack.Screen name="App" component={AppNavigator} />
+      
+            <RootStack.Screen name="Auth" component={AuthNavigator} />
+          
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }

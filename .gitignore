@@ -1,6 +1,16 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# Android/Expo build folders
+android/app/build/
+android/.gradle/
+android/gradle/
+android/app/src/main/assets/
 
-# dependencies
+# iOS build folders
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+ios/.xcuserstate
+
+# Node modules (already included)
 node_modules/
 
 # Expo
@@ -20,19 +30,20 @@ expo-env.d.ts
 # Metro
 .metro-health-check*
 
-# debug
+# Debug logs
 npm-debug.*
 yarn-debug.*
 yarn-error.*
 
-# macOS
+# macOS system files
 .DS_Store
 *.pem
 
-# local env files
+# Local environment files
 .env*.local
 
-# typescript
+# TypeScript build info files
 *.tsbuildinfo
 
+# App example files
 app-example

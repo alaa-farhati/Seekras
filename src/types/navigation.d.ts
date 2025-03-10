@@ -18,6 +18,7 @@ export type AppStackParamList = {
   Notifications: undefined;
   Chat: undefined;
   ChatDetails:undefined;
+  Comments:undefined;
   
 };
 

@@ -17,6 +17,7 @@ const posts = [
     likes: 349,
     comments: 760,
     timePosted: "1 min ago",
+    isGroupPost: false,
   },
   {
     id: "2",
@@ -28,6 +29,9 @@ const posts = [
     likes: 349,
     comments: 760,
     timePosted: "1 min ago",
+    isGroupPost: true,
+    groupName: "Photography Enthusiasts",
+    groupImage: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     id: "3",
@@ -39,6 +43,7 @@ const posts = [
     likes: 349,
     comments: 760,
     timePosted: "1 min ago",
+    isGroupPost: false,
   },
   {
     id: "4",
@@ -50,6 +55,9 @@ const posts = [
     likes: 349,
     comments: 760,
     timePosted: "1 min ago",
+    isGroupPost: true,
+    groupName: "Nature Lovers",
+    groupImage: "https://randomuser.me/api/portraits/men/1.jpg",
   },
 ];
 

@@ -65,7 +65,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
       {/* Toggle lock/unlock for password inputs */}
       {secureTextEntry ? (
         <TouchableOpacity onPress={() => setIsSecure(!isSecure)} style={styles.button}>
-          <Icon name={isSecure ? "lock-closed-outline" : "lock-open-outline"} color={theme.button} size={sizes.icon.medium} />
+          <Icon name={isSecure ? "eye-off-outline" : "eye-outline"} color={theme.accent} size={sizes.icon.medium} />
         </TouchableOpacity>
       ) : rightIcon ? (
         <TouchableOpacity onPress={onPress} style={styles.button}>

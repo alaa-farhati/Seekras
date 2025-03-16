@@ -40,9 +40,9 @@ interface Comment {
 // Sample post data
 const POST: Post = {
   id: 'post1',
-  username: 'francescofogu',
-  avatarUrl: "https://windows10spotlight.com/wp-content/uploads/2023/01/81a6e74c8adbf7f55406e8c4b80669d5.jpg",
-  content: 'The best part of the weekend is taking Murphy to her favorite spot, and seeing how fast she can run.',
+  username: 'akmalnsrllh',
+  avatarUrl: "https://randomuser.me/api/portraits/men/1.jpg",
+  content: "When life gives you limes, arrange them in a zesty flatlay and create a 'lime-light' masterpiece! 🍋✨",
   timeAgo: '1h',
   hashtags: ['dogs'],
 };

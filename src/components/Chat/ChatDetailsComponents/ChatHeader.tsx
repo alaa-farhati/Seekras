@@ -51,7 +51,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       </TouchableOpacity>
       
       <TouchableOpacity style={styles.iconButton}>
-        <Icon name="ellipsis-vertical" size={22} color="#333" />
+        <Icon name="videocam-outline" size={22} color="#333" />
       </TouchableOpacity>
     </View>
   );

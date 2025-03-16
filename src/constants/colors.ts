@@ -20,7 +20,7 @@ export const colors = {
   borderLight: "#CCCCCC",  // Light border
   borderDark: "#3A3A3A",   // Dark border
 
-  inputBackgroundLight: "#FFFFFF",  // Input fields light mode
+  inputBackgroundLight: "#f2f3f4",  // Input fields light mode
   inputBackgroundDark: "#1C1C1C",   // Input fields dark mode
 
   inputTextLight: "#333333", // Input text light mode

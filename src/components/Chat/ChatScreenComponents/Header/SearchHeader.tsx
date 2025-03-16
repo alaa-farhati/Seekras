@@ -27,9 +27,14 @@ const SearchHeader: React.FC<SearchHeaderProps> = ({ searchQuery, setSearchQuery
       />
 
       {/* Add Group Button */}
-      <TouchableOpacity style={styles.addGroupIcon} onPress={onPressAddGroup}>
-        <Ionicons name="people-circle-outline" size={sizes.icon.medium} color={theme.text} />
-      </TouchableOpacity>
+      {
+        onPressAddGroup && (
+          <TouchableOpacity style={styles.addGroupIcon} onPress={onPressAddGroup}>
+            <Ionicons name="people-outline" size={sizes.icon.medium} color={theme.text} />
+          </TouchableOpacity>
+        )
+      }
+    
     </View>
   );
 };

@@ -32,26 +32,27 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
       {isReceived && avatar && <Image source={{ uri: avatar }} style={styles.avatar} />}
       
       <View style={styles.contentContainer}>
-        {isReceived && sender && <Text style={styles.senderName}>{sender}</Text>}
+        
         
         <TouchableOpacity onLongPress={toggleOptions} activeOpacity={0.7}>
           <View style={[styles.messageBubble, isReceived ? styles.receivedBubble : styles.sentBubble]}>
-            <Text style={styles.messageText}>{text}</Text>
+            <Text style={[styles.messageText,!isReceived?{color:'white'}:null]}>{text}</Text>
             <View style={styles.timeContainer}>
-              <Text style={styles.timeText}>{time}</Text>
-              {!isReceived && (
-                <Icon
-                  name={status === 'read' ? 'checkmark-done' : 'checkmark'}
-                  size={14}
-                  color={status === 'read' ? '#4FC3F7' : '#BDBDBD'}
-                  style={styles.readIcon}
-                />
-              )}
+              <Text style={[styles.timeText,!isReceived?{color:'white'}:null]}>{time}</Text>
+              
             </View>
+            
           </View>
         </TouchableOpacity>
       </View>
-
+      {!isReceived && (
+                <Icon
+                  name={status === 'read' ? 'checkmark-circle-outline' : 'checkmark'}
+                  size={16}
+                  color={status === 'read' ? 'black' : '#BDBDBD'}
+                  style={styles.readIcon}
+                />
+              )}
       {showOptions && !isReceived && onDelete && (
         <View style={styles.optionsContainer}>
           <TouchableOpacity
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 6,
   },
   sentBubble: {
-    backgroundColor: '#DCF8C6',
+    backgroundColor: '#007AFF',
     borderBottomRightRadius: 6,
   },
   messageText: {
@@ -135,6 +136,7 @@ const styles = StyleSheet.create({
   },
   readIcon: {
     marginTop: 1,
+    marginLeft: 4,
   },
   optionsContainer: {
     alignSelf: 'flex-end',

@@ -206,17 +206,17 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         
        
       </View>
-
-      {/* Post Image */}
-      <Image source={{ uri: post.image }} style={styles.postImage} />
-
-      {/* Caption */}
-      <Text style={[styles.caption, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.label }]}>
+{/* Caption */}
+<Text style={[styles.caption, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.label }]}>
         <Text style={{ fontWeight: "bold", fontFamily: fonts.semiBold, fontSize: sizes.text.caption }}>
-          {post.isGroupPost ? `/${post.user}` : post.user}{" -"}
+          - {post.isGroupPost ? `/${post.user}` : post.user}{" : "}
         </Text>
         {post.caption}
       </Text>
+      {/* Post Image */}
+      <Image source={{ uri: post.image }} style={styles.postImage} />
+
+      
 
       {/* Reaction Counter with Top Emojis */}
       {likeCount > 0 && (
@@ -261,7 +261,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             {selectedReaction ? selectedReaction !== "👍" ? "Reactions" : "Likes" : "Like"}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={()=>navigation.navigate('Comments')}>
+        <TouchableOpacity style={styles.actionButton} onPress={()=>navigation.navigate('Comments'as never)} >
           <Ionicons name="chatbubble-outline" size={sizes.icon.medium} color={theme.text}  />
           <Text style={[styles.actionText, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.small }]}>
             {post.comments > 0 ? `${post.comments} Comments` : "Comment"}

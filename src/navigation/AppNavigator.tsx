@@ -11,6 +11,7 @@ import Notifications from '../screens/Profile/Notifications';
 import AddNewTripScreen from '../screens/Trips/AddNewTrip';
 import TripDetails from '../screens/Trips/TripDetails';
 import WeatherScreen from '../screens/Trips/Weather';
+import CreateProductScreen from '../screens/Marketplace/CreateProduct';
 
 
 const AppStack = createNativeStackNavigator<AppStackParamList>();  // Type the navigator
@@ -60,6 +61,14 @@ export function AppNavigator() {
        <AppStack.Screen
         name="ProductDetails"
         component={ProductDetailsScreen}
+        options={{
+          headerShown: false, // Hide header for Settings screen
+          presentation:'modal'
+        }}
+      />
+       <AppStack.Screen
+        name="CreateProduct"
+        component={CreateProductScreen}
         options={{
           headerShown: false, // Hide header for Settings screen
           presentation:'modal'

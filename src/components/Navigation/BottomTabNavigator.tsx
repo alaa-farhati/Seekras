@@ -44,7 +44,7 @@ const BottomTabNavigator = () => {
       icon: 'cart-outline',
       hideHeader:false,
       leftText: 'Create',
-      leftClick: () => console.log('Create new product'),
+      leftClick: () =>  navigation.navigate('CreateProduct' as never),
     },
     {
       name: 'CreatePost',

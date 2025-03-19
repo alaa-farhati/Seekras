@@ -15,6 +15,7 @@ export type AppStackParamList = {
   Settings: undefined;
   Feed: undefined;
   Marketplace: undefined;
+  CreateProduct:undefined;
   CreatePost: undefined;
   Notifications: undefined;
   Chat: undefined;

@@ -55,7 +55,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
           inputStyle, // Allow input text styling
         ]}
         placeholder={placeholder}
-        placeholderTextColor={theme.text}
+        placeholderTextColor={"#999"}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
+    borderWidth: 0.2,
     borderRadius: 15,
     paddingHorizontal: 10,
     height: 50,

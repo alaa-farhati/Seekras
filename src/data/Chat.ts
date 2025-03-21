@@ -1,3 +1,5 @@
+
+
 export const chats = [
     {
       id: "1",
@@ -92,3 +94,26 @@ export const chats = [
       status: false
     }
   ];
+   const user_id = '1234';
+    const first_name = 'John';
+    const last_name = 'Doe';
+    const profile_image_id = "https://randomuser.me/api/portraits/men/53.jpg";
+  export const dummyMessages: ChatMessage[] = [
+      {
+        id: '1',
+        message: 'Hey, how are you doing?',
+        sender_id: '1002',
+        type: 'received',
+        time: '09:30 AM',
+        sender: { id: '1002', name: `${first_name} ${last_name}`, avatar: profile_image_id },
+      },
+      {
+        id: '2',
+        message: 'I\'m good, thanks! How about you?',
+        sender_id: user_id,
+        type: 'sent',
+        time: '09:32 AM',
+        is_read: true,
+        sender: { id: user_id, name: `${first_name} ${last_name}`, avatar: profile_image_id },
+      },
+    ];

@@ -3,7 +3,6 @@ import {
   View, 
   Text, 
   TouchableOpacity, 
-  StyleSheet, 
   KeyboardAvoidingView, 
   Platform, 
   ScrollView 
@@ -14,7 +13,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList, AuthStackParamList } from "../../types/navigation";
 import { useTheme } from "../../hooks/useTheme";
 import CustomInput from "../../components/Reusables/CustomInput";
-import { fonts } from "../../constants";
+import { styles } from "../../styles/Auth";
 
 // Corrected type definition
 type SignupScreenProps = CompositeScreenProps<
@@ -31,30 +30,12 @@ const Signup: React.FC<SignupScreenProps> = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleSignup = () => {
-    // if (!name.trim()) {
-    //   alert("Please enter your name");
-    //   return;
-    // }
-    
-    // if (!email.trim()) {
-    //   alert("Please enter your email");
-    //   return;
-    // }
-    
-    // if (password !== confirmPassword) {
-    //   alert("Passwords do not match");
-    //   return;
-    // }
     navigation.navigate("Auth", { screen: "CompleteProfile" });
     setIsLoading(true);
-    
-    // Simulate API call
     setTimeout(() => {
       console.log("Signing up with:", name, email, password);
       setIsLoading(false);
-      // TODO: Add actual signup logic
-      // On success:
-      // navigation.navigate("App", {screen: "MainTabs"});
+    
     }, 1500);
   };
 
@@ -167,83 +148,3 @@ const Signup: React.FC<SignupScreenProps> = ({ navigation }) => {
 
 export default Signup;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 24,
-  },
-  headerContainer: {
-    marginBottom: 40,
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 28,
-    fontFamily: fonts.bold,
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    fontFamily: fonts.regular,
-    opacity: 0.8,
-  },
-  formContainer: {
-    width: "100%",
-    marginBottom: 24,
-  },
-  input: {
-    marginBottom: 16,
-    width: "100%",
-  },
-  signupButton: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 56,
-    borderRadius: 12,
-    marginTop: 8,
-    marginBottom: 16,
-  },
-  signupButtonText: {
-    fontFamily: fonts.bold,
-    fontSize: 16,
-    color: "#FFFFFF",
-  },
-  termsContainer: {
-    marginBottom: 32,
-    paddingHorizontal: 8,
-  },
-  termsText: {
-    fontFamily: fonts.regular,
-    fontSize: 14,
-    textAlign: "center",
-    lineHeight: 20,
-  },
-  termsLink: {
-    fontFamily: fonts.medium,
-  },
-  footerContainer: {
-    alignItems: "center",
-  },
-  loginLink: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  linkText: {
-    fontFamily: fonts.regular,
-    fontSize: 14,
-  },
-  linkTextBold: {
-    fontFamily: fonts.bold,
-    fontSize: 14,
-  },
-  skipButton: {
-    padding: 8,
-  },
-  skipText: {
-    fontFamily: fonts.regular,
-    fontSize: 14,
-    opacity: 0.7,
-  },
-});

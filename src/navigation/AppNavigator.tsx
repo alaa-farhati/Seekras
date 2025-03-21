@@ -5,7 +5,6 @@ import Profile from '../screens/Profile/Profile';
 
 import Settings from '../screens/Settings/Settings';
 import ChatDetails from '../screens/Chat/ChatDetails';
-import CommentsScreen from '../screens/Feed/Comments';
 import ProductDetailsScreen from '../screens/Marketplace/ProductDetails';
 import Notifications from '../screens/Profile/Notifications';
 import AddNewTripScreen from '../screens/Trips/AddNewTrip';
@@ -50,14 +49,7 @@ export function AppNavigator() {
           headerShown: false, // Hide header for Settings screen
         }}
       />
-        <AppStack.Screen
-        name="Comments"
-        component={CommentsScreen}
-        options={{
-          headerShown: false, // Hide header for Settings screen
-          presentation:'modal'
-        }}
-      />
+       
        <AppStack.Screen
         name="ProductDetails"
         component={ProductDetailsScreen}

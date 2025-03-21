@@ -2,13 +2,9 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { useTheme } from '../../../../hooks/useTheme';
 import { fonts, sizes } from '../../../../constants';
-import { OnlineFriend } from '../../../../types/chat';
+
 import OnlineFriendItem from './OnlineFriendsItem';
 
-interface OnlineFriendsListProps {
-  friends: OnlineFriend[];
-  onSelectFriend?: (friend: OnlineFriend) => void;
-}
 
 const OnlineFriendsList: React.FC<OnlineFriendsListProps> = ({ friends, onSelectFriend }) => {
   const { theme } = useTheme();

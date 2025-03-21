@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from '../../../assets/Icons/Index';
-
+import { styles } from '../../../styles/Marketplace/ProductDetails';
 const SimilarProducts: React.FC = () => {
   return (
     <View style={styles.similarProductsContainer}>
@@ -31,43 +31,6 @@ const SimilarProducts: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  similarProductsContainer: {
-    backgroundColor: '#fff',
-    padding: 15,
-    marginTop: 8,
-    marginBottom: 80, // Add padding to avoid bottom navigation overlap
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 15,
-  },
-  similarProductsGrid: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  similarProduct: {
-    width: '48%',
-  },
-  similarProductImage: {
-    width: '100%',
-    height: 150,
-    backgroundColor: '#E4E6EB',
-    borderRadius: 8,
-    marginBottom: 8,
-  },
-  similarProductInfo: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  similarProductPrice: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-});
+
 
 export default SimilarProducts;

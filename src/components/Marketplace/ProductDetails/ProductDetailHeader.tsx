@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from '../../../assets/Icons/Index';
-
+import { styles } from '../../../styles/Marketplace/ProductDetails';
 interface HeaderProps {
   navigation: any;
   handleShare: () => void;
@@ -28,37 +28,6 @@ const Header: React.FC<HeaderProps> = ({ navigation, handleShare, handleSave, is
   );
 };
 
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    paddingVertical: 15,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E4E6EB',
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    flex: 1,
-    marginLeft: 15,
-  },
-  backButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  headerActions: {
-    flexDirection: 'row',
-  },
-  iconButton: {
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 5,
-  },
-});
+
 
 export default Header;

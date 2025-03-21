@@ -1,4 +1,4 @@
-import { LoginBody, LoginResponse } from "../types/user";
+
 
 export const baseUrl:string="http://192.168.122.1:3000"
 

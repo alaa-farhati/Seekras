@@ -1,4 +1,4 @@
-export interface Theme {
+ interface Theme {
   name: string;
   primary: string;          // Primary color (White in light mode, Dark in dark mode)
   background: string;       // Background color (Softer than primary)

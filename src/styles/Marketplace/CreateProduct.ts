@@ -1,0 +1,147 @@
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+        container: {
+      flex: 1,
+      backgroundColor: "#fff",
+    },
+    header: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+      borderBottomWidth: 1,
+      borderBottomColor: "#EAECEF",
+      backgroundColor: "#fff",
+    },
+    backButton: {
+      padding: 4,
+    },
+    headerTitle: {
+      fontSize: 18,
+      fontWeight: "600",
+      color: "#000",
+    },
+    publishButton: {
+      paddingHorizontal: 16,
+      paddingVertical: 8,
+    },
+    publishButtonDisabled: {
+      opacity: 0.5,
+    },
+    publishButtonText: {
+      fontSize: 16,
+      fontWeight: "500",
+      color: "#000",
+    },
+    scrollContent: {
+      flex: 1,
+    },
+    photoSection: {
+      alignItems: "center",
+      paddingVertical: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: "#EAECEF",
+    },
+    addPhotoButton: {
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    addPhotoCircle: {
+      width: 80,
+      height: 80,
+      borderRadius: 40,
+      backgroundColor: "#EEEEEE",
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 8,
+    },
+    addPhotoText: {
+      fontSize: 16,
+      fontWeight: "500",
+      color: "#000",
+      marginBottom: 4,
+    },
+    photoCount: {
+      fontSize: 14,
+      color: "#666",
+    },
+    photoGrid: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      marginTop: 20,
+      paddingHorizontal: 15,
+    },
+    photoContainer: {
+      position: "relative",
+      margin: 5,
+    },
+    photoThumbnail: {
+      width: 60,
+      height: 60,
+      borderRadius: 8,
+      backgroundColor: "#f0f0f0",
+    },
+    removePhotoButton: {
+      position: "absolute",
+      top: -5,
+      right: -5,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 10,
+      width: 20,
+      height: 20,
+      alignItems: "center",
+      justifyContent: "center",
+      borderWidth: 1,
+      borderColor: "#EAECEF",
+    },
+    formSection: {
+      paddingHorizontal: 16,
+      paddingVertical: 10,
+    },
+    textInput: {
+      backgroundColor: "#F5F5F5",
+      borderRadius: 10,
+      paddingHorizontal: 16,
+      paddingVertical: 14,
+      fontSize: 16,
+      marginBottom: 12,
+      color: "#333",
+    },
+    multilineInput: {
+      minHeight: 120,
+      textAlignVertical: "top",
+      paddingTop: 14,
+    },
+    dropdownInput: {
+      backgroundColor: "#F5F5F5",
+      borderRadius: 10,
+      paddingHorizontal: 16,
+      paddingVertical: 14,
+      fontSize: 16,
+      marginBottom: 12,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    locationInput: {
+      backgroundColor: "#F5F5F5",
+      borderRadius: 10,
+      paddingHorizontal: 16,
+      paddingVertical: 14,
+      fontSize: 16,
+      marginBottom: 12,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    dropdownText: {
+      fontSize: 16,
+      color: "#333",
+    },
+    placeholderText: {
+      fontSize: 16,
+      color: "#999",
+    },
+})

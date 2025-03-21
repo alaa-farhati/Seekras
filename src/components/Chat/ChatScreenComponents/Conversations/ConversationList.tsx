@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { useTheme } from '../../../../hooks/useTheme';
 import { fonts, sizes } from '../../../../constants';
-import { ChatMessage } from '../../../../types/chat';
 import ChatItem from './ChatItem';
 
 interface ConversationListProps {

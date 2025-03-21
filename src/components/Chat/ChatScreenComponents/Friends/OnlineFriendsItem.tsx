@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTheme } from '../../../../hooks/useTheme';
 import { fonts, sizes } from '../../../../constants';
 import StatusIndicator from '../../../Reusables/StatusIndicator';
-import { OnlineFriend } from '../../../../types/chat';
+
 
 interface OnlineFriendItemProps {
   friend: OnlineFriend;

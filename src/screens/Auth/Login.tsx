@@ -4,20 +4,18 @@ import {
   View, 
   Text, 
   TouchableOpacity, 
-  StyleSheet, 
-  ImageBackground,
   KeyboardAvoidingView,
   Platform,
   ScrollView
 } from "react-native";
 import { AppStackParamList, AuthStackParamList } from "../../types/navigation";
 import { CompositeScreenProps } from "@react-navigation/native";
-import { fonts, sizes } from "../../constants";
 import CustomInput from "../../components/Reusables/CustomInput";
 import CustomButton from "../../components/Reusables/CustomButton";
 import { useTheme } from "../../hooks/useTheme";
-import { LoginBody } from "../../types/user";
 import { login } from "../../utils/api";
+import { styles } from "../../styles/Auth";
+
 
 // Corrected type definition
 type LoginScreenProps = CompositeScreenProps<
@@ -106,8 +104,6 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
               onPress={handleNormalLogin}
               style={[styles.loginButton, { backgroundColor: theme.text }]}
               icon="person"
-              // textStyle={styles.loginButtonText}
-              // isLoading={isLoading}
             />
           </View>
 
@@ -157,95 +153,3 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
 
 export default Login;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 24,
-  },
-  headerContainer: {
-    marginBottom: 40,
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 28,
-    fontFamily: fonts.bold,
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    fontFamily: fonts.regular,
-    opacity: 0.8,
-  },
-  formContainer: {
-    width: "100%",
-    marginBottom: 24,
-  },
-  input: {
-    marginBottom: 16,
-    width: "100%",
-  },
-  forgotPasswordButton: {
-    alignSelf: "flex-end",
-    marginBottom: 24,
-  },
-  forgotPasswordText: {
-    fontFamily: fonts.medium,
-    fontSize: 14,
-  },
-  loginButton: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    height: 56,
-    borderRadius: 12,
-    marginBottom: 16,
-  },
-  loginButtonText: {
-    fontFamily: fonts.bold,
-    fontSize: 16,
-    color: "#FFFFFF",
-  },
-  dividerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 24,
-  },
-  divider: {
-    flex: 1,
-    height: 1,
-  },
-  dividerText: {
-    paddingHorizontal: 16,
-    fontFamily: fonts.regular,
-    fontSize: 14,
-  },
-  socialButtonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 32,
-  },
-  socialButton: {
-    width: "48%",
-    height: 56,
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
-  footerContainer: {
-    alignItems: "center",
-  },
-  linkButton: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  linkText: {
-    fontFamily: fonts.regular,
-    fontSize: 14,
-  },
-  linkTextBold: {
-    fontFamily: fonts.bold,
-    fontSize: 14,
-  },
-});

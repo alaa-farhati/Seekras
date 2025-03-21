@@ -14,16 +14,11 @@ const ChatScreen: React.FC<ChatScreenProps> = ({ navigation }) => {
   
   
   return (
-    <View style={styles.container}>
+    <View style={{flex:1}}>
       <ChatList chats={chats} onlineFriends={onlineFriends} navigation={navigation} />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default ChatScreen;

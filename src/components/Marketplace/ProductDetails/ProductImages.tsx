@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-
+import { styles } from '../../../styles/Marketplace/ProductDetails';
 interface ProductImagesProps {
   images: string[];
   mainImage: string;
@@ -35,33 +35,6 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images, mainImage }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  mainImageContainer: {
-    width: '100%',
-    position: 'relative',
-  },
-  mainImage: {
-    width: '100%',
-    height: 240,
-    backgroundColor: '#E4E6EB',
-  },
-  imageIndicators: {
-    position: 'absolute',
-    bottom: 15,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  indicator: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#CCC',
-    marginHorizontal: 3,
-  },
-  activeIndicator: {
-    backgroundColor: '#666',
-  },
-});
+
 
 export default ProductImages;

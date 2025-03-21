@@ -3,51 +3,14 @@ import {
   View, 
   FlatList, 
   Text, 
-  StyleSheet, 
   ActivityIndicator, 
   ListRenderItem 
 } from "react-native";
 import PostCard from "../../components/Feed/PostCard";
 import { useTheme } from "../../hooks/useTheme";
+import { formatTimeAgo } from "../../utils/dateUtils";
+import { styles } from "../../styles/Feed";
 
-// Define the types for a post
-interface Post {
-  id: string;
-  user: string;
-  location: string;
-  userImage: string;
-  image: string;
-  caption: string;
-  likes: number;
-  comments: number;
-  timePosted: string;
-  isGroupPost: boolean;
-  groupName: string;
-  groupImage: string;
-}
-
-// Define the structure of API response
-interface ApiResponse {
-  posts: {
-    id: string;
-    user?: {
-      firstName?: string;
-      lastName?: string;
-      profilePictureUrl?: string;
-    };
-    locationName?: string;
-    mediaUrl?: string;
-    content?: string;
-    likesCount?: number;
-    commentsCount?: number;
-    createdAt?: string;
-    groupId?: string;
-    group?: {
-      name?: string;
-      profilePictureUrl?: string;
-    };
-  }[];
-}
 
 const FeedScreen: React.FC = () => {
   const { theme } = useTheme(); // Get theme from context
@@ -60,11 +23,7 @@ const FeedScreen: React.FC = () => {
     if (!apiData || !apiData.posts || !Array.isArray(apiData.posts)) {
       return [];
     }
-    const extractImageUrl = (url: string): string => {
-      const urlObj = new URL(url);
-      const params = new URLSearchParams(urlObj.search);
-      return params.get("u") ? decodeURIComponent(params.get("u")!) : url;
-    };
+  
     return apiData.posts.map(post => {
       const user = post.user || {};
       const group = post.group || null;
@@ -86,32 +45,7 @@ const FeedScreen: React.FC = () => {
     });
   };
 
-  // Helper function to format timestamp to "time ago" format
-  const formatTimeAgo = (timestamp?: string): string => {
-    if (!timestamp) return '';
-
-    const now = new Date();
-    const postTime = new Date(timestamp);
-    const diffMs = now.getTime() - postTime.getTime();
-
-    // Convert to minutes, hours, days
-    const diffMins = Math.floor(diffMs / (1000 * 60));
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (diffMins < 60) {
-      return `${diffMins} min ago`;
-    } else if (diffHours < 24) {
-      return `${diffHours} hours ago`;
-    } else {
-      return `${diffDays} days ago`;
-    }
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
+  
   const fetchPosts = async (): Promise<void> => {
     try {
       setLoading(true);
@@ -132,6 +66,10 @@ const FeedScreen: React.FC = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
 
   // Handle pull-to-refresh functionality
   const handleRefresh = (): void => {
@@ -179,19 +117,6 @@ const FeedScreen: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  feedContent: {
-    paddingHorizontal: 10,
-    paddingTop: 10,
-    flexGrow: 1,
-  },
-  centerContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-});
+
 
 export default FeedScreen;

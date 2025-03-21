@@ -1,8 +1,8 @@
-export interface LoginBody {
+ interface LoginBody {
     email: string;
     password: string;
 }
-export interface LoginResponse {
+ interface LoginResponse {
     message: string;
     user: {
       email: string;

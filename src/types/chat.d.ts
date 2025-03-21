@@ -1,10 +1,10 @@
-export interface Sender {
+ interface Sender {
     id?: string;
     name: string;
     avatar: string;
   }
   
- export  interface ChatMessage {
+   interface ChatMessage {
     id: string;
     sender: Sender;
     message: string;
@@ -16,20 +16,30 @@ export interface Sender {
     is_read?: boolean;
   }
   
- export  interface OnlineFriend {
+   interface OnlineFriend {
     id: string;
     name: string;
     avatar: string;
     status: boolean
   }
-//   export interface Message {
-//     message_id: string;
-//     content: string;
-//     sender_id: string;
-//     type: 'sent' | 'received';
-//     time: string;
-//     is_read?: boolean;
-//     active: string;
-//     avatar?: string;
-//     sender?: string;
-//   }
+interface ChatHeaderProps {
+  navigation: any;
+  emp_name: string;
+  online: boolean;
+  profile_image_id?: string;
+  onPressProfileImage: () => void;
+}
+interface MessageBubbleProps {
+  text: string;
+  time: string;
+  type: 'sent' | 'received';
+  status?: 'read' | 'unread'; // Only for sent messages
+  sender?: string; // Only for received messages
+  avatar?: string; // Only for received messages
+  onDelete?: () => void; // Only for sent messages
+}
+interface OnlineFriendsListProps {
+  friends: OnlineFriend[];
+  onSelectFriend?: (friend: OnlineFriend) => void;
+  
+}

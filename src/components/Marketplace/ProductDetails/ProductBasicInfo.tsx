@@ -2,7 +2,7 @@
 // File: components/ProductDetails/ProductBasicInfo.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
+import { styles } from '../../../styles/Marketplace/ProductDetails';
 interface ProductBasicInfoProps {
   title: string;
   price: number;
@@ -32,45 +32,6 @@ const ProductBasicInfo: React.FC<ProductBasicInfoProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  basicInfoContainer: {
-    backgroundColor: '#fff',
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E4E6EB',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 5,
-  },
-  productName: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#000',
-    flex: 1,
-  },
-  reservedBadge: {
-    backgroundColor: '#E4E6EB',
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    borderRadius: 15,
-  },
-  reservedText: {
-    fontSize: 14,
-    color: '#65676B',
-  },
-  price: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 5,
-  },
-  timePosted: {
-    fontSize: 14,
-    color: '#65676B',
-  },
-});
+
 
 export default ProductBasicInfo;

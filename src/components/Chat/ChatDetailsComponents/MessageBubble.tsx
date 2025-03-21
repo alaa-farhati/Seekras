@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Icon } from '../../../assets/Icons/Index';
+import { styles } from '../../../styles/Chat';
 
-interface MessageBubbleProps {
-  text: string;
-  time: string;
-  type: 'sent' | 'received';
-  status?: 'read' | 'unread'; // Only for sent messages
-  sender?: string; // Only for received messages
-  avatar?: string; // Only for received messages
-  onDelete?: () => void; // Only for sent messages
-}
 
 const MessageBubble: React.FC<MessageBubbleProps> = ({
   text,
@@ -70,94 +62,5 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    marginVertical: 6,
-    paddingHorizontal: 10,
-  },
-  receivedContainer: {
-    alignSelf: 'flex-start',
-  },
-  sentContainer: {
-    alignSelf: 'flex-end',
-  },
-  avatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    marginRight: 8,
-  },
-  contentContainer: {
-    maxWidth: '75%',
-    flexShrink: 1,
-  },
-  senderName: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#616161',
-    marginBottom: 4,
-    marginLeft: 6,
-  },
-  messageBubble: {
-    borderRadius: 16,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  receivedBubble: {
-    backgroundColor: '#FFF',
-    borderBottomLeftRadius: 6,
-  },
-  sentBubble: {
-    backgroundColor: '#007AFF',
-    borderBottomRightRadius: 6,
-  },
-  messageText: {
-    fontSize: 16,
-    color: '#303030',
-  },
-  timeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-end',
-    marginTop: 4,
-  },
-  timeText: {
-    fontSize: 12,
-    color: '#8E8E8E',
-    marginRight: 4,
-  },
-  readIcon: {
-    marginTop: 1,
-    marginLeft: 4,
-  },
-  optionsContainer: {
-    alignSelf: 'flex-end',
-    marginTop: 8,
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  deleteButton: {
-    backgroundColor: '#E53935',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-  },
-  deleteText: {
-    color: '#FFF',
-    marginLeft: 6,
-    fontSize: 14,
-    fontWeight: '500',
-  },
-});
 
 export default MessageBubble;

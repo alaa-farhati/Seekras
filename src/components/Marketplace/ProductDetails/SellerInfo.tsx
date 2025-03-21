@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Icon } from '../../../assets/Icons/Index';
-
+import { styles } from '../../../styles/Marketplace/ProductDetails';
 interface SellerInfoProps {
   sellerName: string;
   condition: string;
@@ -27,28 +27,5 @@ const SellerInfo: React.FC<SellerInfoProps> = ({ sellerName, condition }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  sellerInfoContainer: {
-    backgroundColor: '#fff',
-    padding: 15,
-    marginTop: 8,
-  },
-  sellerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  sellerIconContainer: {
-    width: 30,
-  },
-  sellerName: {
-    fontSize: 16,
-    color: '#000',
-  },
-  conditionText: {
-    fontSize: 16,
-    color: '#000',
-  },
-});
 
 export default SellerInfo;

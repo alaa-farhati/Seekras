@@ -98,3 +98,19 @@
       category: 'camping',
     },
   ];
+  export const CONDITIONS = ["New", "Like New", "Good", "Fair", "Poor"];
+  
+  // Categories available for selection
+  export const CATEGORIES = [
+    "Electronics", 
+    "Clothing", 
+    "Home Goods", 
+    "Furniture", 
+    "Sports Equipment",
+    "Toys & Games",
+    "Vehicles",
+    "Other"
+  ];
+  
+  // Listing types
+  export const LISTING_TYPES = ["For Sale", "For Trade", "Free", "Wanted"];

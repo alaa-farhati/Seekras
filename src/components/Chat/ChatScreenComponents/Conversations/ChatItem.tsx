@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useTheme } from '../../../../hooks/useTheme';
 import { fonts, sizes } from '../../../../constants';
-import { ChatMessage } from '../../../../types/chat';
-
+import { styles } from '../../../../styles/Chat';
 interface ChatItemProps {
   chat: ChatMessage;
   onPress?: () => void;
@@ -51,53 +50,5 @@ const ChatItem: React.FC<ChatItemProps> = ({ chat, onPress }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  chatItem: {
-    flexDirection: "row",
-    padding: 15,
-    borderBottomWidth: 0.5,
-  },
-  chatAvatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 15,
-  },
-  chatContent: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  chatHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 5,
-  },
-  chatName: {
-    fontWeight: "bold",
-  },
-  chatTime: {},
-  chatMessageContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  chatMessage: {
-    flex: 1,
-  },
-  unreadBadge: {
-    backgroundColor: "#ffcc00",
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginLeft: 10,
-  },
-  unreadText: {
-    color: "black",
-    fontWeight: "bold",
-  },
-});
 
 export default ChatItem;

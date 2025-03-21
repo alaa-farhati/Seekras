@@ -51,7 +51,9 @@ const BottomTabNavigator = () => {
       label: 'Post',
       component: CreatePostScreen,
       icon: 'add-outline',
-      hideHeader:false
+      hideHeader:false,
+      leftText: 'Create',
+      leftClick: () => console.log('created'),
   
     },
     {

@@ -31,8 +31,8 @@ import { styles } from "../../styles/Feed";
 const API_URL = "http://localhost:3000/feed/create-post";
 
 // Mock user data
-const userProfileImage = "https://randomuser.me/api/portraits/men/53.jpg";
-const userName = "Alaa farhati";
+const userProfileImage = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbeebom.com%2Fwp-content%2Fuploads%2F2020%2F11%2Fhow-to-create-reddit-avatar-feat..jpg%3Fquality%3D75%26strip%3Dall&f=1&nofb=1&ipt=e964bb1c7d874892b13bb9ef2dea87719eacb554fbfce08cc4f056a9c983bc5d&ipo=images";
+const userName = "AdventureSeeker";
 const userId = "46796f09-4fa1-4465-90de-849dd0bb01d4";
 
 // Mock friends/contacts data for tagging

@@ -5,8 +5,6 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  StyleSheet,
-  Dimensions,
   FlatList,
   ListRenderItem
 } from 'react-native';
@@ -22,11 +20,12 @@ interface Post {
   id: string;
   title: string;
   location: string;
-  upvotes: number;
+  likes: number;
   comments: number;
   time: string;
   image?: string;
   type: 'post' | 'saved' | 'shared';
+  
 }
 
 interface Achievement {
@@ -64,7 +63,7 @@ const POSTS: Post[] = [
     id: '1',
     title: 'Amazing sunrise at Mount Rainier',
     location: 'Mount Rainier National Park',
-    upvotes: 143,
+    likes: 143,
     comments: 24,
     time: '2d',
     image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.r0eT5QafKiYNsOnvEXs1jgHaE8%26pid%3DApi&f=1&ipt=619fde1efe540ccbe1119a82a75418245eec0aefc3d5e3c0b86c580e54aada27&ipo=images',
@@ -74,7 +73,7 @@ const POSTS: Post[] = [
     id: '2',
     title: 'Perfect campsite by the lake',
     location: 'Lake Tahoe',
-    upvotes: 98,
+    likes: 98,
     comments: 14,
     time: '5d',
     type: 'post'
@@ -83,7 +82,7 @@ const POSTS: Post[] = [
     id: '3',
     title: 'Best hiking trails in Yosemite',
     location: 'Yosemite National Park',
-    upvotes: 234,
+    likes: 234,
     comments: 42,
     time: '1w',
     image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.r0eT5QafKiYNsOnvEXs1jgHaE8%26pid%3DApi&f=1&ipt=619fde1efe540ccbe1119a82a75418245eec0aefc3d5e3c0b86c580e54aada27&ipo=images',
@@ -93,7 +92,7 @@ const POSTS: Post[] = [
     id: '4',
     title: 'Camping gear essentials for beginners',
     location: 'General Tips',
-    upvotes: 562,
+    likes: 562,
     comments: 71,
     time: '3d',
     type: 'shared'
@@ -205,7 +204,7 @@ const Profile: React.FC = () => {
       <View style={styles.postFooter}>
         <View style={styles.postStat}>
           <MaterialIcons name="favorite" size={16} color="#E63946" />
-          <Text style={styles.postStatText}>{item.upvotes}</Text>
+          <Text style={styles.postStatText}>{item.likes}</Text>
         </View>
         
         <View style={styles.postStat}>
@@ -318,14 +317,14 @@ const Profile: React.FC = () => {
           <Text style={styles.username}>AdventureSeeker</Text>
           
           <View style={styles.statsRow}>
-            {/* <View style={styles.stat}>
+            <View style={styles.stat}>
               <MaterialCommunityIcons name="star-circle" size={16} color="#FFD700" />
               <Text style={styles.statText}>{totalPoints} points</Text>
             </View>
             <View style={styles.stat}>
               <MaterialCommunityIcons name="tent" size={16} color="#3C6E47" />
               <Text style={styles.statText}>{VISITED_PLACES.length} places</Text>
-            </View> */}
+            </View>
           </View>
           
           <View style={styles.buttonRow}>
@@ -354,7 +353,7 @@ const Profile: React.FC = () => {
           Passionate outdoor enthusiast and camping lover. Always seeking new adventures in the wild.
           Hiking, fishing, and stargazing are my favorite activities when camping.
         </Text><View style={styles.badgesSection}>
-        {/* <Text style={styles.sectionTitle}>Badges</Text>
+        <Text style={styles.sectionTitle}>Badges</Text>
         <FlatList
           key="badgesList"
           data={BADGES}
@@ -363,7 +362,7 @@ const Profile: React.FC = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.badgesList}
-        /> */}
+        />
       </View>
       </View>
       
@@ -377,7 +376,7 @@ const Profile: React.FC = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.tabsScroll}
         >
-          {['Places', 'Posts', 'Saved', 'Shared'].map((tab) => {
+          {['Places', 'Posts', 'Saved', 'Shared',"Achievements"].map((tab) => {
             const tabLowerCase = tab.toLowerCase() as TabOption;
             return (
               <TouchableOpacity

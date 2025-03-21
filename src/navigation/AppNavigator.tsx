@@ -11,6 +11,7 @@ import AddNewTripScreen from '../screens/Trips/AddNewTrip';
 import TripDetails from '../screens/Trips/TripDetails';
 import WeatherScreen from '../screens/Trips/Weather';
 import CreateProductScreen from '../screens/Marketplace/CreateProduct';
+import EditProfile from '../screens/Profile/EditProfile';
 
 
 const AppStack = createNativeStackNavigator<AppStackParamList>();  // Type the navigator
@@ -26,6 +27,11 @@ export function AppNavigator() {
       <AppStack.Screen
         name="Profile"
         component={Profile}
+        options={{ headerShown: false }} // Hide header for Profile screen
+      />
+       <AppStack.Screen
+        name="EditProfile"
+        component={EditProfile}
         options={{ headerShown: false }} // Hide header for Profile screen
       />
       <AppStack.Screen

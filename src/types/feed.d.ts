@@ -11,6 +11,7 @@ interface Post {
     isGroupPost: boolean;
     groupName: string;
     groupImage: string;
+    type: 'post' | 'saved' | 'shared';
   }
   interface ApiResponse {
     posts: {

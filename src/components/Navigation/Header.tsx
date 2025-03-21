@@ -8,7 +8,7 @@ import { useTheme } from "../../hooks/useTheme"; // Adjust the path
 import { fonts, sizes } from "../../constants"; // Adjust the path
 import { useNavigation } from "@react-navigation/native";
 
-const userProfileImage = "https://randomuser.me/api/portraits/men/53.jpg"; // Replace with your default user image
+const userProfileImage = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbeebom.com%2Fwp-content%2Fuploads%2F2020%2F11%2Fhow-to-create-reddit-avatar-feat..jpg%3Fquality%3D75%26strip%3Dall&f=1&nofb=1&ipt=e964bb1c7d874892b13bb9ef2dea87719eacb554fbfce08cc4f056a9c983bc5d&ipo=images"; // Replace with your default user image
 
 interface HeaderProps {
   title: string;

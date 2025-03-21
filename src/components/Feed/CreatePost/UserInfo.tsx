@@ -13,6 +13,7 @@ const UserInfo: React.FC<UserInfoProps> = ({ avatarUrl, userName }) => {
     <View style={styles.userInfoSection}>
       <Image source={{ uri: avatarUrl }} style={styles.userAvatar} />
       <Text style={styles.userName}>{userName}</Text>
+      
     </View>
   );
 };

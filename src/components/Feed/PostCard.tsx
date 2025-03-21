@@ -49,7 +49,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   
   // Available reactions
   const reactions = [
-    { emoji: "😁", name: "Like" },
+    { emoji: "❤️", name: "Like" },
     { emoji: "😍", name: "Love" },
     { emoji: "😮", name: "Wow" },
     { emoji: "😢", name: "Sad" }
@@ -145,7 +145,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       {/* Group Header - Only shown for group posts */}
       {post.isGroupPost && (
         <View style={styles.groupHeader}>
-          {post.groupImage ? (
+          {!post.groupImage ? (
             <Image source={{ uri: post.groupImage }} style={styles.groupImage} />
           ) : (
             <View style={[styles.groupImageFallback, { backgroundColor: theme.accent }]}>
@@ -239,7 +239,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             ))}
           </View>
           <Text style={[styles.reactionCountText, { color: theme.text }]}>
-            {likeCount}
+            {post.likes}
           </Text>
         </View>
       )}

@@ -1,7 +1,26 @@
 import React from "react";
-import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
 import CustomInput from "../../Reusables/CustomInput";
 import { styles } from "../../../styles/CompleteProfile";
+
+interface Hobby {
+  id: number;
+  name: string;
+  image?: string; // Add image URL property
+}
+
+interface Interest {
+  id: number;
+  name: string;
+  image?: string; // Add image URL property
+}
+
+interface Theme {
+  text: string;
+  inputBackground?: string;
+  inputText: string;
+  // Add other theme properties as needed
+}
 
 interface StepContentProps {
   currentStep: number;
@@ -112,12 +131,20 @@ const StepContent: React.FC<StepContentProps> = ({
                   onPress={() => toggleHobby(item.id)}
                 >
                   <View style={styles.hobbyIconContainer}>
-                    <View
-                      style={[
-                        styles.hobbyIcon,
-                        { backgroundColor: selectedHobbies?.includes(item.id) ? "#FFFFFF20" : "#DDDDDD" },
-                      ]}
-                    />
+                    {item.image ? (
+                      <Image 
+                        source={{ uri: item.image }} 
+                        style={styles.hobbyIcon} 
+                        resizeMode="cover"
+                      />
+                    ) : (
+                      <View
+                        style={[
+                          styles.hobbyIcon,
+                          { backgroundColor: selectedHobbies?.includes(item.id) ? "#FFFFFF20" : "#DDDDDD" },
+                        ]}
+                      />
+                    )}
                   </View>
                   <Text
                     style={[
@@ -159,12 +186,20 @@ const StepContent: React.FC<StepContentProps> = ({
                   onPress={() => toggleInterest(item.id)}
                 >
                   <View style={styles.interestIconContainer}>
-                    <View
-                      style={[
-                        styles.interestIcon,
-                        { backgroundColor: selectedInterests?.includes(item.id) ? "#FFFFFF20" : "#DDDDDD" },
-                      ]}
-                    />
+                    {item.image ? (
+                      <Image 
+                        source={{ uri: item.image }} 
+                        style={styles.interestIcon} 
+                        resizeMode="cover"
+                      />
+                    ) : (
+                      <View
+                        style={[
+                          styles.interestIcon,
+                          { backgroundColor: selectedInterests?.includes(item.id) ? "#FFFFFF20" : "#DDDDDD" },
+                        ]}
+                      />
+                    )}
                   </View>
                   <Text
                     style={[

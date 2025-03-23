@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import SplashScreen from '../../components/Auth/Onboarding/SplashScreen';
-import OnboardingCard from '../../components/Auth/Onboarding/OnboardingCard';
+import SplashScreen from '../../components/Auth-Component/Onboarding/SplashScreen';
+import OnboardingCard from '../../components/Auth-Component/Onboarding/OnboardingCard';
 import { onboardingData } from '../../data/Auth/Onboarding';
-
-
 
 interface OnboardingScreenProps {
   onNavigateToAuth: () => void;

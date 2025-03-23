@@ -16,7 +16,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AppStackParamList } from "../../types/navigation";
 import { Icon } from "../../assets/Icons/Index";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { styles } from "../../styles/Marketplace/CreateProduct";
+import { styles } from "../../styles/Marketplace-Styles/CreateProduct";
 // Explicitly type the props for CreateProductScreen
 type CreateProductScreenProps = NativeStackScreenProps<AppStackParamList, "CreateProduct">;
 

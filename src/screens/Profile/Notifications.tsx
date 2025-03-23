@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../../components/Navigation/Header';
+import Header from '../../components/Navigation-Component/Header';
 import { Icon } from '../../assets/Icons/Index';
 
 

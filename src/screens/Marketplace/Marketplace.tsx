@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { View, SafeAreaView, ScrollView,Text } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { products } from '../../data/Marketplace';
-import CustomInput from '../../components/Reusables/CustomInput';
-import CategoryList from '../../components/Marketplace/Products/CategoryList';
-import ProductGrid from '../../components/Marketplace/Products/ProductGrid';
-import styles from '../../components/Marketplace/Products/MarketPlaceStyles';
+import CustomInput from '../../components/Reusables-Component/CustomInput';
+import CategoryList from '../../components/Marketplace-Component/Products/CategoryList';
+import ProductGrid from '../../components/Marketplace-Component/Products/ProductGrid';
+import styles from '../../components/Marketplace-Component/Products/MarketPlaceStyles';
 import { AppStackParamList } from '../../types/navigation';
 import { fonts, sizes } from '../../constants';
 

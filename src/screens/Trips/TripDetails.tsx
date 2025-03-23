@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Icon } from '../../assets/Icons/Index';
-import { styles } from '../../styles/Trips/TripDetails';
+import { styles } from '../../styles/Trips-Styles/TripDetails';
 interface RouteParams {
   tripId: string;
 }

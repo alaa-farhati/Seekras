@@ -9,18 +9,18 @@ import {
 } from "react-native";
 import { CompositeScreenProps } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList, AuthStackParamList } from "../../types/navigation";
+import { RootStackParamList, AuthStackParamList, AppStackParamList } from "../../types/navigation";
 import { useTheme } from "../../hooks/useTheme";
 
-import Header from "../../components/Auth/Signup/Header";
-import FormContainer from "../../components/Auth/Signup/FormContainer";
-import Footer from "../../components/Auth/Signup/Footer";
-import { SignupStyles } from "../../styles/Auth/Signup";
+import Header from "../../components/Auth-Component/Signup/Header";
+import FormContainer from "../../components/Auth-Component/Signup/FormContainer";
+import Footer from "../../components/Auth-Component/Signup/Footer";
+import { SignupStyles } from "../../styles/Auth-Styles/Signup";
 
 // Corrected type definition
 type SignupScreenProps = CompositeScreenProps<
   NativeStackScreenProps<AuthStackParamList, "Signup">,
-  NativeStackScreenProps<RootStackParamList, never>
+  NativeStackScreenProps<RootStackParamList, 'App'>
 >;
 
 const Signup: React.FC<SignupScreenProps> = ({ navigation }) => {
@@ -51,7 +51,6 @@ const Signup: React.FC<SignupScreenProps> = ({ navigation }) => {
       >
         <View style={[SignupStyles.container, { backgroundColor: theme.background }]}>
           <Header/>
-          
           <FormContainer 
             theme={theme}
             name={name}
@@ -64,7 +63,6 @@ const Signup: React.FC<SignupScreenProps> = ({ navigation }) => {
             setConfirmPassword={setConfirmPassword}
             handleSignup={handleSignup}
           />
-          
           <Footer theme={theme} navigation={navigation} />
         </View>
       </ScrollView>

@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '../../assets/Icons/Index';
-import CustomInput from '../../components/Reusables/CustomInput';
-import Header from '../../components/Navigation/Header';
-import { styles } from '../../styles/Trips/AddNewTrip';
+import CustomInput from '../../components/Reusables-Component/CustomInput';
+import Header from '../../components/Navigation-Component/Header';
+import { styles } from '../../styles/Trips-Styles/AddNewTrip';
 const AddNewTrip: React.FC = () => {
   const navigation = useNavigation();
   const [tripName, setTripName] = useState('');

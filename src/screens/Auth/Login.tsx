@@ -1,12 +1,12 @@
 // screens/Auth/Login.tsx
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
-import Header from '../../components/Auth/Login/Header';
-import LoginForm from '../../components/Auth/Login/FormContainer';
-import Footer from '../../components/Auth/Login/Footer';
+import Header from '../../components/Auth-Component/Login/Header';
+import LoginForm from '../../components/Auth-Component/Login/FormContainer';
+import Footer from '../../components/Auth-Component/Login/Footer';
 import { useTheme } from '../../hooks/useTheme';
 import { login } from '../../utils/api';
-import { LoginStyles } from '../../styles/Auth/Login';
+import { LoginStyles } from '../../styles/Auth-Styles/Login';
 
 
 const Login: React.FC<{ navigation: any }> = ({ navigation }) => {

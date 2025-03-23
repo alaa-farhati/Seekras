@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '../../assets/Icons/Index';
-import CustomInput from '../../components/Reusables/CustomInput';
-import { styles } from '../../styles/Trips/Trips';
+import CustomInput from '../../components/Reusables-Component/CustomInput';
+import { styles } from '../../styles/Trips-Styles/Trips';
 
 interface Trip {
   id: string;

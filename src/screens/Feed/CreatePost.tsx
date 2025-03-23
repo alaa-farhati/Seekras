@@ -4,7 +4,7 @@ import {
   View, 
   Text, 
   TouchableOpacity, 
-  StyleSheet, 
+   
   ScrollView, 
   Alert,
   KeyboardAvoidingView,
@@ -25,7 +25,8 @@ import LocationInput from "../../components/Feed/CreatePost/LocationInput";
 import ImagePreview from "../../components/Feed/CreatePost/ImagePreview";
 import TaggedPeople from "../../components/Feed/CreatePost/TaggedPeople";
 import TagPeopleModal from "../../components/Feed/CreatePost/TaggedPeopleModal";
-import { styles } from "../../styles/Feed";
+import { CreatePostStyles } from "../../styles/Feed/CreatePost";
+
 
 // API endpoint
 const API_URL = "http://localhost:3000/feed/create-post";
@@ -144,13 +145,13 @@ const CreatePostScreen: React.FC<CreatePostScreenProps> = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView 
-      style={styles.container}
+      style={CreatePostStyles.container}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
       keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
     >
       
 
-      <ScrollView style={styles.scrollContent}>
+      <ScrollView style={CreatePostStyles.scrollContent}>
         {/* User Info */}
         <UserInfo avatarUrl={userProfileImage} userName={userName} />
 
@@ -169,9 +170,9 @@ const CreatePostScreen: React.FC<CreatePostScreenProps> = ({ navigation }) => {
         />
 
         {/* Add Photos */}
-        <TouchableOpacity style={styles.optionContainer} onPress={handleAddPhotos}>
+        <TouchableOpacity style={CreatePostStyles.optionContainer} onPress={handleAddPhotos}>
           <Icon name="image-outline" size={24} color="#666" />
-          <Text style={styles.optionText}>add photos</Text>
+          <Text style={CreatePostStyles.optionText}>add photos</Text>
         </TouchableOpacity>
 
         {/* Selected Photos Preview */}
@@ -181,9 +182,9 @@ const CreatePostScreen: React.FC<CreatePostScreenProps> = ({ navigation }) => {
         />
 
         {/* Tag People */}
-        <TouchableOpacity style={styles.optionContainer} onPress={toggleTagPeople}>
+        <TouchableOpacity style={CreatePostStyles.optionContainer} onPress={toggleTagPeople}>
           <Icon name="people-outline" size={24} color="#666" />
-          <Text style={styles.optionText}>Tag people</Text>
+          <Text style={CreatePostStyles.optionText}>Tag people</Text>
         </TouchableOpacity>
 
         {/* Tagged People */}

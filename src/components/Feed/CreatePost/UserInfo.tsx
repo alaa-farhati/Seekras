@@ -1,8 +1,8 @@
 // components/UserInfo.tsx
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { fonts } from "../../../constants";
-import { styles } from "../../../styles/Feed";
+import { CreatePostStyles } from "../../../styles/Feed/CreatePost";
+
 interface UserInfoProps {
   avatarUrl: string;
   userName: string;
@@ -10,9 +10,9 @@ interface UserInfoProps {
 
 const UserInfo: React.FC<UserInfoProps> = ({ avatarUrl, userName }) => {
   return (
-    <View style={styles.userInfoSection}>
-      <Image source={{ uri: avatarUrl }} style={styles.userAvatar} />
-      <Text style={styles.userName}>{userName}</Text>
+    <View style={CreatePostStyles.userInfoSection}>
+      <Image source={{ uri: avatarUrl }} style={CreatePostStyles.userAvatar} />
+      <Text style={CreatePostStyles.userName}>{userName}</Text>
       
     </View>
   );

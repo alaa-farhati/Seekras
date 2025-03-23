@@ -10,8 +10,8 @@ import {
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 // Components
-import ChatHeader from "../../components/Chat/ChatDetailsComponents/ChatHeader";
-import MessageBubble from "../../components/Chat/ChatDetailsComponents/MessageBubble";
+import ChatHeader from "../../components/Chat/ChatDetails/ChatHeader";
+import MessageBubble from "../../components/Chat/ChatDetails/MessageBubble";
 
 // Types
 import { AppStackParamList } from "../../types/navigation";

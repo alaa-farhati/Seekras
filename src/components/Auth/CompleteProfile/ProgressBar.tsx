@@ -1,17 +1,18 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Icon } from "../../../assets/Icons/Index";
-import { styles } from "../../../styles/CompleteProfile";
+import { CompleteProfileStyles } from "../../../styles/Auth/CompleteProfile";
+
 
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ totalSteps, currentStep, theme }) => {
   return (
-    <View style={styles.progressContainer}>
+    <View style={CompleteProfileStyles.progressContainer}>
       {Array.from({ length: totalSteps }).map((_, index) => (
-        <View key={index} style={styles.progressItemContainer}>
+        <View key={index} style={CompleteProfileStyles.progressItemContainer}>
           <View
             style={[
-              styles.progressCircle,
+              CompleteProfileStyles.progressCircle,
               {
                 backgroundColor: index + 1 <= currentStep ? theme?.accent ?? "blue" : theme?.inputBackground ?? "gray",
                 borderColor: index + 1 <= currentStep ? theme?.accent ?? "blue" : theme?.inputBackground ?? "gray",
@@ -19,12 +20,12 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ totalSteps, currentStep, them
             ]}
           >
             {index + 1 < currentStep && Icon ? <Icon name="checkmark" size={12} color="#FFFFFF" /> : null}
-            {index + 1 === currentStep && <Text style={styles.progressCurrentText}>{index + 1}</Text>}
+            {index + 1 === currentStep && <Text style={CompleteProfileStyles.progressCurrentText}>{index + 1}</Text>}
           </View>
           {index < totalSteps - 1 && (
             <View
               style={[
-                styles.progressLine,
+                CompleteProfileStyles.progressLine,
                 { backgroundColor: index + 1 < currentStep ? theme?.accent ?? "blue" : theme?.inputBackground ?? "gray" },
               ]}
             />

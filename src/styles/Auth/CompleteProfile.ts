@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { fonts } from '../constants';
+import { fonts } from '../../constants';
 
-export const styles = StyleSheet.create({
+export const CompleteProfileStyles = StyleSheet.create({
     container: {
       flex: 1,
       padding: 24,

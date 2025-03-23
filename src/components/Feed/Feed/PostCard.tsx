@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Modal, Animated, Pressable, TextInput, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../../hooks/useTheme";
-import { sizes } from "../../constants";
-import { fonts } from "../../constants";
+import { useTheme } from "../../../hooks/useTheme";
+import { sizes } from "../../../constants";
+import { fonts } from "../../../constants";
 import { useNavigation } from "@react-navigation/native";
+import { PostCardStyles } from "../../../styles/Feed/PostCard";
 
 interface PostCardProps {
   post: {
@@ -134,28 +135,28 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
   return (
     <View style={[
-      styles.postContainer, 
+      PostCardStyles.postContainer, 
       { 
         backgroundColor: theme.card,
         // Apply different style for group posts
-        ...(post.isGroupPost && styles.groupPostContainer)
+        ...(post.isGroupPost && PostCardStyles.groupPostContainer)
       }
     ]}>
       
       {/* Group Header - Only shown for group posts */}
       {post.isGroupPost && (
-        <View style={styles.groupHeader}>
+        <View style={PostCardStyles.groupHeader}>
           {!post.groupImage ? (
-            <Image source={{ uri: post.groupImage }} style={styles.groupImage} />
+            <Image source={{ uri: post.groupImage }} style={PostCardStyles.groupImage} />
           ) : (
-            <View style={[styles.groupImageFallback, { backgroundColor: theme.accent }]}>
-              <Text style={styles.groupImageFallbackText}>
+            <View style={[PostCardStyles.groupImageFallback, { backgroundColor: theme.accent }]}>
+              <Text style={PostCardStyles.groupImageFallbackText}>
                 {post.groupName?.charAt(0) || "G"}
               </Text>
             </View>
           )}
-          <View style={styles.groupInfo}>
-            <Text style={[styles.groupName, { color: theme.text, fontFamily: fonts.semiBold,fontSize:11 }]}>
+          <View style={PostCardStyles.groupInfo}>
+            <Text style={[PostCardStyles.groupName, { color: theme.text, fontFamily: fonts.semiBold,fontSize:11 }]}>
             {post.isGroupPost ? `${post.user.charAt(0)}/${post.groupName}` : post.user}
             </Text>
           </View>
@@ -166,16 +167,16 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       )}
       
       {/* Post Header - Modified for group posts */}
-      <View style={styles.header}>
+      <View style={PostCardStyles.header}>
         {/* Only show profile image for non-group posts */}
         {!post.isGroupPost && (
-          <Image source={{ uri: post.userImage }} style={styles.profileImage} />
+          <Image source={{ uri: post.userImage }} style={PostCardStyles.profileImage} />
         )}
         {
           !post.isGroupPost && (
-            <View style={styles.userInfo}>
+            <View style={PostCardStyles.userInfo}>
             <Text style={[
-              styles.userName, 
+              PostCardStyles.userName, 
               { 
                 color: theme.text, 
                 fontFamily: fonts.semiBold, 
@@ -186,9 +187,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             ]}>
               {post.user}
             </Text>
-            <View style={styles.locationContainer}>
+            <View style={PostCardStyles.locationContainer}>
               <Ionicons name="location-outline" size={sizes.icon.small} color={theme.text} />
-              <Text style={[styles.location, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.extraSmall }]}>
+              <Text style={[PostCardStyles.location, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.extraSmall }]}>
                 {post.location} • {post.timePosted}
               </Text>
             </View>
@@ -207,26 +208,26 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
        
       </View>
 {/* Caption */}
-<Text style={[styles.caption, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.label }]}>
+<Text style={[PostCardStyles.caption, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.label }]}>
         <Text style={{ fontWeight: "bold", fontFamily: fonts.semiBold, fontSize: sizes.text.caption }}>
           - {post.isGroupPost ? `/${post.user}` : post.user}{" : "}
         </Text>
         {post.caption}
       </Text>
       {/* Post Image */}
-      <Image source={{ uri: post.image }} style={styles.postImage} />
+      <Image source={{ uri: post.image }} style={PostCardStyles.postImage} />
 
       
 
       {/* Reaction Counter with Top Emojis */}
       {likeCount > 0 && (
-        <View style={styles.reactionCounter}>
-          <View style={styles.reactionIcons}>
+        <View style={PostCardStyles.reactionCounter}>
+          <View style={PostCardStyles.reactionIcons}>
             {topReactions.map((emoji, index) => (
               <View 
                 key={index} 
                 style={[
-                  styles.reactionIcon, 
+                  PostCardStyles.reactionIcon, 
                   { 
                     backgroundColor: theme.inputBackground,
                     zIndex: 3 - index, // Higher z-index for first items
@@ -238,16 +239,16 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               </View>
             ))}
           </View>
-          <Text style={[styles.reactionCountText, { color: theme.text }]}>
+          <Text style={[PostCardStyles.reactionCountText, { color: theme.text }]}>
             {post.likes}
           </Text>
         </View>
       )}
 
       {/* Likes and Comments */}
-      <View style={styles.actions}>
+      <View style={PostCardStyles.actions}>
         <TouchableOpacity 
-          style={styles.actionButton}
+          style={PostCardStyles.actionButton}
           onPress={handleLikePress}
           onLongPress={handleLongPress}
           delayLongPress={300}
@@ -257,19 +258,19 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
           ) : (
             <Ionicons name="heart-outline" size={sizes.icon.medium} color={theme.text} />
           )}
-          <Text style={[styles.actionText, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.small }]}>
+          <Text style={[PostCardStyles.actionText, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.small }]}>
             {selectedReaction ? selectedReaction !== "👍" ? "Reactions" : "Likes" : "Like"}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={()=>navigation.navigate('Comments'as never)} >
+        <TouchableOpacity style={PostCardStyles.actionButton} onPress={()=>navigation.navigate('Comments'as never)} >
           <Ionicons name="chatbubble-outline" size={sizes.icon.medium} color={theme.text}  />
-          <Text style={[styles.actionText, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.small }]}>
+          <Text style={[PostCardStyles.actionText, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.small }]}>
             {post.comments > 0 ? `${post.comments} Comments` : "Comment"}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton} onPress={handleSharePress}>
+        <TouchableOpacity style={PostCardStyles.actionButton} onPress={handleSharePress}>
           <Ionicons name="share-social-outline" size={sizes.icon.medium} color={theme.text} />
-          <Text style={[styles.actionText, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.small }]}>
+          <Text style={[PostCardStyles.actionText, { color: theme.text, fontFamily: fonts.regular, fontSize: sizes.text.small }]}>
             Share
           </Text>
         </TouchableOpacity>
@@ -282,10 +283,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         animationType="none"
         onRequestClose={closeReactions}
       >
-        <Pressable style={styles.modalOverlay} onPress={closeReactions}>
+        <Pressable style={PostCardStyles.modalOverlay} onPress={closeReactions}>
           <Animated.View 
             style={[
-              styles.reactionPanel, 
+              PostCardStyles.reactionPanel, 
               { 
                 transform: [{ scale: scaleAnim }],
                 backgroundColor: theme.card,
@@ -295,11 +296,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             {reactions.map((reaction, index) => (
               <TouchableOpacity 
                 key={index} 
-                style={styles.reactionButton}
+                style={PostCardStyles.reactionButton}
                 onPress={() => handleReaction(reaction.emoji, reaction.name)}
               >
-                <Text style={styles.reactionEmoji}>{reaction.emoji}</Text>
-                <Text style={[styles.reactionName, { color: theme.text }]}>{reaction.name}</Text>
+                <Text style={PostCardStyles.reactionEmoji}>{reaction.emoji}</Text>
+                <Text style={[PostCardStyles.reactionName, { color: theme.text }]}>{reaction.name}</Text>
               </TouchableOpacity>
             ))}
           </Animated.View>
@@ -313,23 +314,23 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         animationType="slide"
         onRequestClose={() => setShowShareModal(false)}
       >
-        <View style={styles.modalOverlay}>
-          <View style={[styles.shareModal, { backgroundColor: theme.card }]}>
-            <View style={styles.shareHeader}>
-              <Text style={[styles.shareTitle, { color: theme.text }]}>Share Post</Text>
+        <View style={PostCardStyles.modalOverlay}>
+          <View style={[PostCardStyles.shareModal, { backgroundColor: theme.card }]}>
+            <View style={PostCardStyles.shareHeader}>
+              <Text style={[PostCardStyles.shareTitle, { color: theme.text }]}>Share Post</Text>
               <TouchableOpacity onPress={() => setShowShareModal(false)}>
                 <Ionicons name="close" size={24} color={theme.text} />
               </TouchableOpacity>
             </View>
             
-            <View style={styles.shareContent}>
-              <View style={styles.userShareInfo}>
-                <Image source={{ uri: post.userImage }} style={styles.shareUserImage} />
-                <Text style={[styles.shareUserName, { color: theme.text }]}>You</Text>
+            <View style={PostCardStyles.shareContent}>
+              <View style={PostCardStyles.userShareInfo}>
+                <Image source={{ uri: post.userImage }} style={PostCardStyles.shareUserImage} />
+                <Text style={[PostCardStyles.shareUserName, { color: theme.text }]}>You</Text>
               </View>
               
               <TextInput
-                style={[styles.shareInput, { color: theme.text, borderColor: theme.border }]}
+                style={[PostCardStyles.shareInput, { color: theme.text, borderColor: theme.border }]}
                 placeholder="Write something..."
                 placeholderTextColor={theme.text}
                 multiline
@@ -337,14 +338,14 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 onChangeText={setShareMessage}
               />
               
-              <View style={styles.postPreview}>
-                <Image source={{ uri: post.image }} style={styles.previewImage} />
-                <View style={styles.previewContent}>
-                  <Text style={[styles.previewUser, { color: theme.text }]}>
+              <View style={PostCardStyles.postPreview}>
+                <Image source={{ uri: post.image }} style={PostCardStyles.previewImage} />
+                <View style={PostCardStyles.previewContent}>
+                  <Text style={[PostCardStyles.previewUser, { color: theme.text }]}>
                     {post.isGroupPost ? `${post.groupName} • /${post.user}` : post.user}
                   </Text>
                   <Text 
-                    style={[styles.previewCaption, { color: theme.text }]}
+                    style={[PostCardStyles.previewCaption, { color: theme.text }]}
                     numberOfLines={2}
                   >
                     {post.caption}
@@ -352,30 +353,30 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 </View>
               </View>
               
-              <View style={styles.shareOptions}>
-                <Text style={[styles.shareOptionTitle, { color: theme.text }]}>Share to:</Text>
+              <View style={PostCardStyles.shareOptions}>
+                <Text style={[PostCardStyles.shareOptionTitle, { color: theme.text }]}>Share to:</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                  <TouchableOpacity style={[styles.shareOption, { backgroundColor: theme.border }]}>
+                  <TouchableOpacity style={[PostCardStyles.shareOption, { backgroundColor: theme.border }]}>
                     <Ionicons name="globe-outline" size={20} color={theme.text} />
-                    <Text style={[styles.shareOptionText, { color: theme.text }]}>Public</Text>
+                    <Text style={[PostCardStyles.shareOptionText, { color: theme.text }]}>Public</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={[styles.shareOption, { backgroundColor: theme.border }]}>
+                  <TouchableOpacity style={[PostCardStyles.shareOption, { backgroundColor: theme.border }]}>
                     <Ionicons name="people-outline" size={20} color={theme.text} />
-                    <Text style={[styles.shareOptionText, { color: theme.text }]}>Friends</Text>
+                    <Text style={[PostCardStyles.shareOptionText, { color: theme.text }]}>Friends</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={[styles.shareOption, { backgroundColor: theme.border }]}>
+                  <TouchableOpacity style={[PostCardStyles.shareOption, { backgroundColor: theme.border }]}>
                     <Ionicons name="chatbubbles-outline" size={20} color={theme.text} />
-                    <Text style={[styles.shareOptionText, { color: theme.text }]}>Message</Text>
+                    <Text style={[PostCardStyles.shareOptionText, { color: theme.text }]}>Message</Text>
                   </TouchableOpacity>
                 </ScrollView>
               </View>
             </View>
             
             <TouchableOpacity 
-              style={[styles.shareButton, { backgroundColor: theme.accent }]}
+              style={[PostCardStyles.shareButton, { backgroundColor: theme.accent }]}
               onPress={handleShare}
             >
-              <Text style={styles.shareButtonText}>Share Now</Text>
+              <Text style={PostCardStyles.shareButtonText}>Share Now</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -384,270 +385,6 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  postContainer: {
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  // Special styling for group posts
-  groupPostContainer: {
-    borderLeftWidth: 3,
-    borderLeftColor: "#FF4500", // Reddit-like color
-  },
-  groupHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 6,
-    paddingBottom: 6,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.05)",
-  },
-  groupImage: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    marginRight: 8,
-  },
-  groupImageFallback: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    marginRight: 8,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  groupImageFallbackText: {
-    color: "#fff",
-    fontSize: 12,
-    fontWeight: "bold",
-  },
-  groupInfo: {
-    flex: 1,
-  },
-  groupName: {
-    fontSize: sizes.text.small,
-    fontWeight: "bold",
-  
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-    // Add less margin for group posts
-    marginTop: 0,
-  },
-  profileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 10,
-  },
-  userInfo: {
-    flexDirection: "column",
-    flexGrow: 1,
-  },
-  userName: {
-    fontWeight: "bold",
-    fontSize: sizes.text.regular,
-  },
-  locationContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  location: {
-    fontSize: sizes.text.extraSmall,
-  },
-  postImage: {
-    width: "100%",
-    height: 200,
-    borderRadius: 10,
-    marginVertical: 10,
-    resizeMode: "cover",
-  },
-  caption: {
-    fontSize: sizes.text.body,
-    marginBottom: 10,
-    lineHeight: 20,
-  },
-  reactionCounter: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  reactionIcons: {
-    flexDirection: "row",
-    marginRight: 5,
-  },
-  reactionIcon: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#fff",
-  },
-  reactionCountText: {
-    fontSize: sizes.text.small,
-    marginLeft: 5,
-  },
-  actions: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 5,
-    borderTopWidth: 1,
-    borderTopColor: "rgba(0,0,0,0.1)",
-    paddingTop: 10,
-  },
-  actionButton: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  actionText: {
-    marginLeft: 5,
-    fontSize: sizes.text.small,
-  },
-  modalOverlay: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
-  },
-  reactionPanel: {
-    flexDirection: "row",
-    padding: 10,
-    borderRadius: 30,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  reactionButton: {
-    alignItems: "center",
-    padding: 10,
-    marginHorizontal: 5,
-  },
-  reactionEmoji: {
-    fontSize: 24,
-    marginBottom: 5,
-  },
-  reactionName: {
-    fontSize: 10,
-    fontFamily: fonts.regular,
-  },
-  shareModal: {
-    width: "90%",
-    maxHeight: "80%",
-    borderRadius: 15,
-    overflow: "hidden",
-  },
-  shareHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.1)",
-  },
-  shareTitle: {
-    fontSize: sizes.text.large,
-    fontWeight: "bold",
-    fontFamily: fonts.semiBold,
-  },
-  shareContent: {
-    padding: 15,
-  },
-  userShareInfo: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 15,
-  },
-  shareUserImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 10,
-  },
-  shareUserName: {
-    fontWeight: "bold",
-    fontSize: sizes.text.regular,
-    fontFamily: fonts.semiBold,
-  },
-  shareInput: {
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 10,
-    minHeight: 80,
-    textAlignVertical: "top",
-    marginBottom: 15,
-    fontFamily: fonts.regular,
-  },
-  postPreview: {
-    flexDirection: "row",
-    borderWidth: 1,
-    borderColor: "rgba(0,0,0,0.1)",
-    borderRadius: 10,
-    overflow: "hidden",
-    marginBottom: 15,
-  },
-  previewImage: {
-    width: 80,
-    height: 80,
-  },
-  previewContent: {
-    flex: 1,
-    padding: 10,
-  },
-  previewUser: {
-    fontWeight: "bold",
-    fontFamily: fonts.semiBold,
-    fontSize: sizes.text.small,
-    marginBottom: 5,
-  },
-  previewCaption: {
-    fontFamily: fonts.regular,
-    fontSize: sizes.text.small,
-  },
-  shareOptions: {
-    marginBottom: 15,
-  },
-  shareOptionTitle: {
-    fontFamily: fonts.semiBold,
-    fontSize: sizes.text.small,
-    marginBottom: 10,
-  },
-  shareOption: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 15,
-    paddingVertical: 8,
-    borderRadius: 20,
-    marginRight: 10,
-  },
-  shareOptionText: {
-    marginLeft: 5,
-    fontFamily: fonts.regular,
-    fontSize: sizes.text.small,
-  },
-  shareButton: {
-    padding: 15,
-    alignItems: "center",
-  },
-  shareButtonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontFamily: fonts.semiBold,
-    fontSize: sizes.text.regular,
-  },
-});
+
 
 export default PostCard;

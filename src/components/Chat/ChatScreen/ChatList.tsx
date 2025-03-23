@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { useTheme } from '../../../hooks/useTheme';
-import { ChatMessage, OnlineFriend } from '../../../types/chat';
+
 
 // Components
 import SearchHeader from './Header/SearchHeader';

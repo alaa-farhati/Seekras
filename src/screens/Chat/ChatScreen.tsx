@@ -1,7 +1,7 @@
 // ChatScreen.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ChatList } from '../../components/Chat/ChatScreenComponents/ChatList';
+import { ChatList } from '../../components/Chat/ChatScreen/ChatList';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AppStackParamList } from '../../types/navigation';
 import { chats, onlineFriends } from '../../data/Chat';

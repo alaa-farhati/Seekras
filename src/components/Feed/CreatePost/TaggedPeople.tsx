@@ -1,8 +1,8 @@
 // components/TaggedPeople.tsx
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { fonts } from "../../../constants";
-import { styles } from "../../../styles/Feed";
+import { CreatePostStyles } from "../../../styles/Feed/CreatePost";
+
 interface TaggedPeopleProps {
   taggedPeople: Array<{
     id: string;
@@ -15,12 +15,12 @@ const TaggedPeople: React.FC<TaggedPeopleProps> = ({ taggedPeople }) => {
   if (taggedPeople.length === 0) return null;
   
   return (
-    <View style={styles.taggedPeopleContainer}>
-      <Text style={styles.taggedPeopleTitle}>Tagged:</Text>
-      <View style={styles.taggedPeopleList}>
+    <View style={CreatePostStyles.taggedPeopleContainer}>
+      <Text style={CreatePostStyles.taggedPeopleTitle}>Tagged:</Text>
+      <View style={CreatePostStyles.taggedPeopleList}>
         {taggedPeople.map((person) => (
-          <View key={person.id} style={styles.taggedPerson}>
-            <Text style={styles.taggedPersonName}>{person.name}</Text>
+          <View key={person.id} style={CreatePostStyles.taggedPerson}>
+            <Text style={CreatePostStyles.taggedPersonName}>{person.name}</Text>
           </View>
         ))}
       </View>

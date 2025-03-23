@@ -1,8 +1,7 @@
 // components/PostContentInput.tsx
 import React from "react";
-import { View, TextInput, StyleSheet } from "react-native";
-import { fonts } from "../../../constants";
-import { styles } from "../../../styles/Feed";
+import { View, TextInput } from "react-native";
+import { CreatePostStyles } from "../../../styles/Feed/CreatePost";
 interface PostContentInputProps {
   title: string;
   body: string;
@@ -18,18 +17,18 @@ const PostContentInput: React.FC<PostContentInputProps> = ({
 }) => {
   return (
     <>
-      <View style={styles.inputContainer}>
+      <View style={CreatePostStyles.inputContainer}>
         <TextInput
-          style={styles.titleInput}
+          style={CreatePostStyles.titleInput}
           placeholder="Title"
           placeholderTextColor="#999"
           value={title}
           onChangeText={onTitleChange}
         />
       </View>
-      <View style={styles.inputContainer}>
+      <View style={CreatePostStyles.inputContainer}>
         <TextInput
-          style={styles.bodyInput}
+          style={CreatePostStyles.bodyInput}
           placeholder="Body text"
           placeholderTextColor="#999"
           multiline

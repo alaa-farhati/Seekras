@@ -14,10 +14,11 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList, AuthStackParamList } from "../../types/navigation";
 import { useTheme } from "../../hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons"; // Make sure you have this installed
-import { styles } from "../../styles/CompleteProfile";
 import ProgressBar from "../../components/Auth/CompleteProfile/ProgressBar";
 import StepContent from "../../components/Auth/CompleteProfile/StepContent";
 import { hobbies, interests } from "../../data/CompleteProfile";
+import { CompleteProfileStyles } from "../../styles/Auth/CompleteProfile";
+
 
 // Type definition
 type CompleteProfileScreenProps = CompositeScreenProps<
@@ -94,8 +95,8 @@ const CompleteProfile: React.FC<CompleteProfileScreenProps> = ({ navigation }) =
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
-        <View style={styles.headerWrapper}>
-          <View style={styles.header}>
+        <View style={CompleteProfileStyles.headerWrapper}>
+          <View style={CompleteProfileStyles.header}>
             <TouchableOpacity onPress={handlePrevious} disabled={currentStep === 1}>
               <Ionicons 
                 name="arrow-back" 
@@ -103,7 +104,7 @@ const CompleteProfile: React.FC<CompleteProfileScreenProps> = ({ navigation }) =
                 color={currentStep === 1 ? theme.inputBackground : theme.text} 
               />
             </TouchableOpacity>
-            <Text style={[styles.headerTitle, { color: theme.text }]}>Complete Profile</Text>
+            <Text style={[CompleteProfileStyles.headerTitle, { color: theme.text }]}>Complete Profile</Text>
             <View style={{ width: 24 }} />
           </View>
           <ProgressBar totalSteps={totalSteps} currentStep={currentStep} theme={theme} />
@@ -113,8 +114,8 @@ const CompleteProfile: React.FC<CompleteProfileScreenProps> = ({ navigation }) =
           contentContainerStyle={{ flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          <View style={[styles.container, { backgroundColor: theme.background }]}>
-            <View style={styles.formContainer}>
+          <View style={[CompleteProfileStyles.container, { backgroundColor: theme.background }]}>
+            <View style={CompleteProfileStyles.formContainer}>
             <StepContent
   currentStep={currentStep}
   theme={theme}
@@ -135,19 +136,19 @@ const CompleteProfile: React.FC<CompleteProfileScreenProps> = ({ navigation }) =
             {/* Next/Complete Button */}
             <CustomButton 
               text={currentStep < totalSteps ? "Next" : "Complete Profile"} 
-              style={[styles.actionButton, { backgroundColor: theme.text }]} 
-              textStyle={styles.actionButtonText}
+              style={[CompleteProfileStyles.actionButton, { backgroundColor: theme.text }]} 
+              textStyle={CompleteProfileStyles.actionButtonText}
               onPress={handleNext} 
             />
 
             {/* Skip button only on last step */}
             {currentStep === totalSteps && (
-              <View style={styles.footerContainer}>
+              <View style={CompleteProfileStyles.footerContainer}>
                 <TouchableOpacity 
-                  style={styles.skipButton} 
+                  style={CompleteProfileStyles.skipButton} 
                   onPress={() => navigation.navigate("App", { screen: "MainTabs" })}
                 >
-                  <Text style={[styles.skipText, { color: theme.text }]}>
+                  <Text style={[CompleteProfileStyles.skipText, { color: theme.text }]}>
                     Skip for now
                   </Text>
                 </TouchableOpacity>

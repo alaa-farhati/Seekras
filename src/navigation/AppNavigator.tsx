@@ -2,8 +2,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AppStackParamList } from '../types/navigation';
 import MainTabs from './MainTabs';
 import Profile from '../screens/Profile/Profile';
-
-import Settings from '../screens/Settings/Settings';
 import ChatDetails from '../screens/Chat/ChatDetails';
 import ProductDetailsScreen from '../screens/Marketplace/ProductDetails';
 import Notifications from '../screens/Profile/Notifications';
@@ -33,13 +31,6 @@ export function AppNavigator() {
         name="EditProfile"
         component={EditProfile}
         options={{ headerShown: false }} // Hide header for Profile screen
-      />
-      <AppStack.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          headerShown: false, // Hide header for Settings screen
-        }}
       />
       <AppStack.Screen
         name="Notifications"

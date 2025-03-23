@@ -73,7 +73,7 @@ const TripsScreen: React.FC = () => {
 
   // Navigate to trip details
   const navigateToTripDetails = (tripId: string) => {
-     navigation.navigate('TripDetails', { tripId });
+    //  navigation.navigate('TripDetails', { tripId });
   };
 
   return (

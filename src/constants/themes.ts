@@ -1,5 +1,4 @@
 import { colors } from "./colors";
-import { Theme } from "../types/theme"; // Import the Theme type
 
 export const themes: { light: Theme; dark: Theme } = {
   light: {

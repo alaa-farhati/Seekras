@@ -11,7 +11,7 @@ export const colors = {
   textLight: "#1A1A1A",  // Dark text for light mode
   textDark: "#E5E5E5",   // Soft white text for dark mode
 
-  accent: "#FF9500",    // Vibrant accent for highlights
+  accent: "#0A4D68",    // Vibrant accent for highlights
   secondary: "#34C759", // Secondary color (same for both modes)
 
   grayLight: "#D6D6D6",  // Soft gray for light theme

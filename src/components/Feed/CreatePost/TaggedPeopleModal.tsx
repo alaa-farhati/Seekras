@@ -2,8 +2,8 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Modal, FlatList, Image, StyleSheet } from "react-native";
 import { Icon } from "../../../assets/Icons/Index";
-import { fonts } from "../../../constants";
-import { styles } from "../../../styles/Feed";
+import { CreatePostStyles } from "../../../styles/Feed/CreatePost";
+
 interface Contact {
   id: string;
   name: string;
@@ -32,10 +32,10 @@ const TagPeopleModal: React.FC<TagPeopleModalProps> = ({
       visible={visible}
       onRequestClose={onClose}
     >
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>
-          <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>Tag People</Text>
+      <View style={CreatePostStyles.modalContainer}>
+        <View style={CreatePostStyles.modalContent}>
+          <View style={CreatePostStyles.modalHeader}>
+            <Text style={CreatePostStyles.modalTitle}>Tag People</Text>
             <TouchableOpacity onPress={onClose}>
               <Icon name="close" size={24} color="#333" />
             </TouchableOpacity>
@@ -46,11 +46,11 @@ const TagPeopleModal: React.FC<TagPeopleModalProps> = ({
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <TouchableOpacity 
-                style={styles.contactItem}
+                style={CreatePostStyles.contactItem}
                 onPress={() => onTagPerson(item)}
               >
-                <Image source={{ uri: item.avatar }} style={styles.contactAvatar} />
-                <Text style={styles.contactName}>{item.name}</Text>
+                <Image source={{ uri: item.avatar }} style={CreatePostStyles.contactAvatar} />
+                <Text style={CreatePostStyles.contactName}>{item.name}</Text>
                 {taggedPeople.some(p => p.id === item.id) && (
                   <Icon name="checkmark-circle" size={24} color="#5E72E4" />
                 )}

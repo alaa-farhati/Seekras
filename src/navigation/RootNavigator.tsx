@@ -32,8 +32,9 @@ export function RootNavigator() {
         onReady={() => {
           SplashScreen.hideAsync(); // Hide splash screen once navigation is ready
         }}
+        
       >
-        <RootStack.Navigator screenOptions={{ headerShown: false }}>
+        <RootStack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Auth'>
          
             <RootStack.Screen name="App" component={AppNavigator} />
       

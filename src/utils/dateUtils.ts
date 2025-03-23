@@ -22,17 +22,23 @@ export const formatDate = (timestamp: number, format: 'full' | 'date' | 'month' 
   // formatDate(1708560000000, 'time') -> "13:43 AM"
   
   
-  export const timeAgo = (timestamp: number): string => {
-    const now = Date.now();
-    const seconds = Math.floor((now - timestamp) / 1000);
+  export const formatTimeAgo = (timestamp?: string): string => {
+      if (!timestamp) return '';
   
-    if (seconds < 60) return `${seconds} seconds ago`;
-    const minutes = Math.floor(seconds / 60);
-    if (minutes < 60) return `${minutes} minutes ago`;
-    const hours = Math.floor(minutes / 60);
-    if (hours < 24) return `${hours} hours ago`;
+      const now = new Date();
+      const postTime = new Date(timestamp);
+      const diffMs = now.getTime() - postTime.getTime();
   
-    const days = Math.floor(hours / 24);
-    if (days === 1) return "Yesterday"; // Added check for yesterday
-    return `${days} days ago`;
-  };
+      // Convert to minutes, hours, days
+      const diffMins = Math.floor(diffMs / (1000 * 60));
+      const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  
+      if (diffMins < 60) {
+        return `${diffMins} min ago`;
+      } else if (diffHours < 24) {
+        return `${diffHours} hours ago`;
+      } else {
+        return `${diffDays} days ago`;
+      }
+    };

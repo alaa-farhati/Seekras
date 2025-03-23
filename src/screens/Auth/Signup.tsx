@@ -1,100 +1,75 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
-const Signup = () => {
-  const navigation = useNavigation();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+// Updated Signup.tsx
+import React, { useState } from "react";
+import { 
+  View, 
+  KeyboardAvoidingView, 
+  Platform, 
+  ScrollView 
+} from "react-native";
+import { CompositeScreenProps } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList, AuthStackParamList } from "../../types/navigation";
+import { useTheme } from "../../hooks/useTheme";
+
+import Header from "../../components/Auth/Signup/Header";
+import FormContainer from "../../components/Auth/Signup/FormContainer";
+import Footer from "../../components/Auth/Signup/Footer";
+import { SignupStyles } from "../../styles/Auth/Signup";
+
+// Corrected type definition
+type SignupScreenProps = CompositeScreenProps<
+  NativeStackScreenProps<AuthStackParamList, "Signup">,
+  NativeStackScreenProps<RootStackParamList, never>
+>;
+
+const Signup: React.FC<SignupScreenProps> = ({ navigation }) => {
+  const { theme } = useTheme();
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleSignup = () => {
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-    console.log("Signing up with:", email, password);
-    // TODO: Add signup logic
+    navigation.navigate("Auth", { screen: "CompleteProfile" });
+    setIsLoading(true);
+    setTimeout(() => {
+      console.log("Signing up with:", name, email, password);
+      setIsLoading(false);
+    }, 1500);
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
-      
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        secureTextEntry
-      />
-      
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity >
-        <Text style={styles.linkText}>Already have an account? Login</Text>
-      </TouchableOpacity>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <ScrollView 
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={[SignupStyles.container, { backgroundColor: theme.background }]}>
+          <Header/>
+          
+          <FormContainer 
+            theme={theme}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            confirmPassword={confirmPassword}
+            setConfirmPassword={setConfirmPassword}
+            handleSignup={handleSignup}
+          />
+          
+          <Footer theme={theme} navigation={navigation} />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
 export default Signup;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f4f4f4",
-    padding: 20,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  input: {
-    width: "100%",
-    padding: 15,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    marginBottom: 15,
-    backgroundColor: "white",
-  },
-  button: {
-    backgroundColor: "#007bff",
-    padding: 15,
-    borderRadius: 8,
-    width: "100%",
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  linkText: {
-    marginTop: 15,
-    color: "#007bff",
-  },
-});

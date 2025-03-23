@@ -10,61 +10,71 @@ import { Icon ,IconName} from '../../assets/Icons/Index';
 import { AppStackParamList } from '../../types/navigation';
 import Header from './Header';
 import { View, StyleSheet } from 'react-native';
-
+import TripsScreen from '../../screens/Trips/Trips';
+import { useNavigation } from '@react-navigation/native';
 
 
 const Tab = createBottomTabNavigator<AppStackParamList>();
 
-const screenConfig: {
-  name: keyof AppStackParamList;
-  label: string;
-  component: React.ComponentType<any>;
-  icon: IconName;
-  hideHeader?: boolean; // Flag for screens without header
-}[] = [
-  {
-    name: 'Feed',
-    label: 'Feed',
-    component: Feed,
-    icon: 'home-outline',
-    hideHeader: true, // Feed screen has its own header
-  },
-  {
-    name: 'Marketplace',
-    label: 'Marketplace',
-    component: Marketplace,
-    icon: 'cart-outline',
-    hideHeader:false
-  },
-  {
-    name: 'CreatePost',
-    label: 'Create Post',
-    component: CreatePostScreen,
-    icon: 'add-outline',
-    hideHeader:false
 
-  },
-  {
-    name: 'Chat',
-    label: 'Chat',
-    component: Chat,
-    icon: 'chatbubble-outline',
-    hideHeader:false
-
-  },
-  {
-    name: 'Notifications',
-    label: 'Notifications',
-    component: Notifications,
-    icon: 'notifications-outline',
-    hideHeader:false
-
-  },
-];
 
 const BottomTabNavigator = () => {
   const { theme } = useTheme();
-
+  const navigation = useNavigation();
+  const screenConfig: {
+    name: keyof AppStackParamList;
+    label: string;
+    component: React.ComponentType<any>;
+    icon: IconName;
+    hideHeader?: boolean; // Flag for screens without header
+    leftText?: string;
+    leftClick?: () => void;
+  }[] = [
+    {
+      name: 'Feed',
+      label: 'Home',
+      component: Feed,
+      icon: 'home-outline',
+      hideHeader: true, // Feed screen has its own header
+    },
+    {
+      name: 'Marketplace',
+      label: 'Shop',
+      component: Marketplace,
+      icon: 'cart-outline',
+      hideHeader:false,
+      leftText: 'Create',
+      leftClick: () =>  navigation.navigate('CreateProduct' as never),
+    },
+    {
+      name: 'CreatePost',
+      label: 'Post',
+      component: CreatePostScreen,
+      icon: 'add-outline',
+      hideHeader:false,
+      leftText: 'Create',
+      leftClick: () => console.log('created'),
+  
+    },
+    {
+      name: 'Chat',
+      label: 'Messages',
+      component: Chat,
+      icon: 'chatbubble-outline',
+      hideHeader:false
+  
+    },
+    {
+      name: 'AddTrip',
+      label: 'Add trip',
+      component: TripsScreen,
+      icon: "compass-outline",
+      hideHeader:false,
+      leftClick: () =>  navigation.navigate('AddNextTrip' as never),
+      leftText: 'Add Trip',
+  
+    },
+  ];
   return (
     <Tab.Navigator
       screenOptions={{
@@ -73,7 +83,7 @@ const BottomTabNavigator = () => {
         tabBarInactiveTintColor: theme.text,
       }}
     >
-      {screenConfig.map(({ name, label, component, icon, hideHeader }) => (
+      {screenConfig.map(({ name, label, component, icon, hideHeader,leftClick,leftText }) => (
        <Tab.Screen
        key={name}
        name={name as keyof AppStackParamList}
@@ -87,12 +97,14 @@ const BottomTabNavigator = () => {
              leftIconName="chevron-back"
              rightIconName="ellipsis-vertical"
              onLeftPress={() => console.log("Back pressed")}
-             onRightPress={() => console.log("Options pressed")}
+             leftText={leftText}
+             leftClick={leftClick}
+             isFeed={hideHeader}
            />
          ),
          tabBarIcon: ({ color, size }) => 
            name === 'CreatePost' ? (
-             <View style={styles.floatingButton}>
+             <View style={[styles.floatingButton,{backgroundColor:theme.primary}]}>
                <Icon name={icon} size={30} color={color} />
              </View>
            ) : (

@@ -11,6 +11,7 @@ interface CustomButtonProps {
   style?: object; // Custom style for the button
   buttonType?: "primary" | "secondary" | "tertiary" | "danger" | "outline" | "ghost"; // Button type
   size?: "small" | "medium" | "large"; // Size of the button
+  textStyle?: object; // Custom style for the button text
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -20,6 +21,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   style,
   buttonType = "primary",
   size = "medium",
+  textStyle
 }) => {
   const { theme } = useTheme(); // Get current theme
 
@@ -83,34 +85,42 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
   return (
     <TouchableOpacity
-      onPress={onPress}
       style={[
         styles.button,
-        sizeStyles[size], // Apply size-specific styles
-        typeStyles[buttonType], // Apply type-specific styles
-        style, // Allow external style overrides
+        {
+          paddingVertical: sizeStyles[size].paddingVertical,
+          paddingHorizontal: sizeStyles[size].paddingHorizontal,
+          backgroundColor: typeStyles[buttonType].backgroundColor,
+          borderWidth: typeStyles[buttonType].color || 0,
+          borderColor: typeStyles[buttonType].color || "transparent",
+        },
+        style,
       ]}
+      onPress={onPress}
     >
-      {icon && (
-        <Icon
-          name={icon}
-          color={typeStyles[buttonType].color}
-          size={iconSize} // Dynamically set icon size
-          style={styles.icon}
-        />
-      )}
-      <Text
-        style={[
-          styles.buttonText,
-          {
-            color: typeStyles[buttonType].color,
-            fontSize: sizeStyles[size].fontSize,
-            fontFamily: fonts.regular,
-          },
-        ]}
-      >
-        {text}
-      </Text>
+      <View style={styles.contentContainer}>
+        {icon && (
+          <Icon
+            name={icon}
+            size={iconSize}
+            color={typeStyles[buttonType].color}
+            style={styles.icon}
+          />
+        )}
+        <Text
+          style={[
+            styles.buttonText,
+            { 
+              fontSize: sizeStyles[size].fontSize,
+              fontFamily: fonts.medium,
+              color: typeStyles[buttonType].color 
+            },
+            textStyle
+          ]}
+        >
+          {text}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 };
@@ -120,9 +130,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 8,
-    justifyContent: "space-between",
-  
-   
+    justifyContent: "center",
+  },
+  contentContainer: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   buttonText: {
     textAlign: "center",

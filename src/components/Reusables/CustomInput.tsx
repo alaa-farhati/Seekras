@@ -55,7 +55,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
           inputStyle, // Allow input text styling
         ]}
         placeholder={placeholder}
-        placeholderTextColor={theme.text}
+        placeholderTextColor={"#999"}
         value={value}
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
@@ -65,7 +65,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
       {/* Toggle lock/unlock for password inputs */}
       {secureTextEntry ? (
         <TouchableOpacity onPress={() => setIsSecure(!isSecure)} style={styles.button}>
-          <Icon name={isSecure ? "lock-closed-outline" : "lock-open-outline"} color={theme.button} size={sizes.icon.medium} />
+          <Icon name={isSecure ? "eye-off-outline" : "eye-outline"} color={theme.accent} size={sizes.icon.medium} />
         </TouchableOpacity>
       ) : rightIcon ? (
         <TouchableOpacity onPress={onPress} style={styles.button}>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
+    borderWidth: 0.2,
     borderRadius: 15,
     paddingHorizontal: 10,
     height: 50,

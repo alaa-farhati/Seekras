@@ -9,13 +9,12 @@
     "ios": "expo run:ios"
   },
   "expo": {
-  "doctor": {
-    "reactNativeDirectoryCheck": {
-      "listUnknownPackages": false
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
     }
-  }
-},
-
+  },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.3",
     "@expo/metro-runtime": "~4.0.0",
@@ -25,6 +24,7 @@
     "@react-navigation/elements": "^2.2.3",
     "@react-navigation/native": "^7.0.12",
     "@react-navigation/native-stack": "^7.1.13",
+    "axios": "^1.8.3",
     "expo": "~52.0.11",
     "expo-asset": "~11.0.1",
     "expo-dev-client": "~5.0.4",
@@ -45,6 +45,5 @@
     "@types/react": "~18.3.12",
     "typescript": "^5.7.2"
   },
-  
   "private": true
 }

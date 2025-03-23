@@ -1,67 +1,90 @@
+// Header.tsx
+
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";  
-import { Icon, IconName } from "../../assets/Icons/Index"; 
-import { useTheme } from "../../hooks/useTheme"; 
-import { fonts, sizes } from "../../constants"; 
+import { View, Text, TouchableOpacity, StyleSheet, Image, TextInput } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Icon, IconName } from "../../assets/Icons/Index"; // Adjust the path
+import { useTheme } from "../../hooks/useTheme"; // Adjust the path
+import { fonts, sizes } from "../../constants"; // Adjust the path
+import { useNavigation } from "@react-navigation/native";
 
-
-const userProfileImage = "https://randomuser.me/api/portraits/men/53.jpg"; // Replace with actual user image URL
+const userProfileImage = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbeebom.com%2Fwp-content%2Fuploads%2F2020%2F11%2Fhow-to-create-reddit-avatar-feat..jpg%3Fquality%3D75%26strip%3Dall&f=1&nofb=1&ipt=e964bb1c7d874892b13bb9ef2dea87719eacb554fbfce08cc4f056a9c983bc5d&ipo=images"; // Replace with your default user image
 
 interface HeaderProps {
   title: string;
   leftIconName: IconName;
-  rightIconName: IconName; // Keeping this but replacing its use with an image
+  rightIconName: IconName;
   onLeftPress: () => void;
-  onRightPress: () => void; // Will be used for profile press
+  leftClick?: () => void;
+  leftText?: string;
+  isFeed?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({
   title,
   leftIconName,
-  rightIconName, // Not used, but kept for consistency
+  rightIconName,
   onLeftPress,
-  onRightPress,
+  leftClick,
+  leftText,
+  isFeed,
 }) => {
-  const { theme,toggleTheme } = useTheme(); 
+  const { theme,toggleTheme } = useTheme();
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
 
   return (
-    <View
-      style={[
-        styles.headerContainer,
-        {
-          backgroundColor: theme.primary,
-          paddingTop: insets.top,
-        },
-      ]}
-    >
-      <View style={styles.contentContainer}>
-        {/* Left Icon */}
-        <TouchableOpacity onPress={onLeftPress} style={styles.iconContainer}>
-          <Icon name={leftIconName} size={sizes.icon.medium} color={theme.text} />
-        </TouchableOpacity>
+    <View style={[styles.headerContainer, { paddingTop: insets.top, backgroundColor: theme.background }]}>
+      {isFeed ? (
+        <View style={styles.feedHeaderContainer}>
+          <TouchableOpacity onPress={() =>navigation.goBack() } style={styles.iconContainer}>
+            <Icon name={!isFeed ? leftIconName : "menu-outline"} size={24} color={theme.text} />
+          </TouchableOpacity>
+          <View style={styles.searchBarContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search here"
+              placeholderTextColor="#888"
+            />
+            <TouchableOpacity style={styles.searchIconContainer}>
+              <Icon name="search" size={20} color="#888" />
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("Notifications" as never)}>
+            <Icon name="notifications-outline" size={24} color={theme.text} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Profile" as never)} style={styles.profileContainer}>
+            <Image source={{ uri: userProfileImage }} style={styles.profileImage} />
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View style={styles.contentContainer}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.iconContainer}>
+            <Icon name={leftIconName} size={24} color={theme.text} />
+          </TouchableOpacity>
+          <Text style={[styles.title, { fontFamily: fonts.medium, color: theme.text }]}>{title}</Text>
+          {leftText && leftClick ? (
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
 
-        {/* Title */}
-        <Text
-          style={[
-            styles.title,
-            {
-              fontFamily: fonts.semiBold,
-              fontSize: sizes.text.medium,
-              color: theme.text,
-            },
-          ]}
-        >
-          {title}
-        </Text>
 
-        {/* Profile Picture instead of Right Icon */}
-        <TouchableOpacity onPress={toggleTheme} style={styles.profileContainer}>
-          <Image source={{ uri: userProfileImage }} style={styles.profileImage} />
-          {/* <StatusIndicator status={true} /> */}
-        </TouchableOpacity>
-      </View>
+            <TouchableOpacity onPress={leftClick} style={styles.leftTextContainer}>
+            <Icon name={"add-outline"} size={16} color={theme.text} />
+              <Text style={[styles.leftText, { color: theme.text,fontFamily:fonts.medium }]}>{leftText}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Profile" as never)} style={styles.profileContainer}>
+              <Image source={{ uri: userProfileImage }} style={styles.profileImage} />
+            </TouchableOpacity>
+            </View>
+
+           
+            
+          ) : (
+            <TouchableOpacity onPress={() => navigation.navigate("Profile" as never)} style={styles.profileContainer}>
+              <Image source={{ uri: userProfileImage }} style={styles.profileImage} />
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
     </View>
   );
 };
@@ -79,25 +102,67 @@ const styles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 10,
   },
+  feedHeaderContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+  },
   title: {
-    textAlign: 'left',
+    textAlign: "left",
     flex: 1,
   },
   iconContainer: {
     padding: 5,
-    width: 40, // Keeps layout consistent
+    width: 40,
     alignItems: "center",
+    justifyContent: "center",
   },
   profileContainer: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    overflow: "hidden", // Ensures image stays circular
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
   },
   profileImage: {
-    width: "80%",
-    height: "80%",
+    width: "70%",
+    height: "70%",
     borderRadius: 20,
+  },
+  searchBarContainer: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#f0f0f0",
+    borderRadius: 25,
+    marginHorizontal: 10,
+    height: 40,
+    alignItems: "center",
+    paddingHorizontal: 15,
+  },
+  searchInput: {
+    flex: 1,
+    height: "100%",
+    fontSize: 16,
+    color: "#333",
+  },
+  searchIconContainer: {
+    padding: 5,
+  },
+  leftTextContainer: {
+    padding: 7,
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 15,
+    backgroundColor: "#f0f0f0",
+    marginRight: 10,
+    
+  },
+  leftText: {
+    fontSize: 14,
+    marginLeft: 5,
   },
 });
 

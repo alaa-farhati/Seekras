@@ -1,95 +1,130 @@
-import React from "react";
-import { View, FlatList, Text, StyleSheet } from "react-native";
-import PostCard from "../../components/Feed/PostCard";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  FlatList,
+  Text,
+  ActivityIndicator,
+  ListRenderItem
+} from "react-native";
+import PostCard from "../../components/Feed/Feed/PostCard";
 import { useTheme } from "../../hooks/useTheme";
+import { formatTimeAgo } from "../../utils/dateUtils";
 
 
 
+// Dummy data for posts
+import { dummyPosts } from "../../data/Feed/Posts";
+import { FeedStyles } from "../../styles/Feed/Feed";
 
-const posts = [
-  {
-    id: "1",
-    user: "akmalnsrllh",
-    location: "Bekasi",
-    userImage: "https://randomuser.me/api/portraits/men/1.jpg",
-    image: "https://windows10spotlight.com/wp-content/uploads/2023/01/81a6e74c8adbf7f55406e8c4b80669d5.jpg",
-    caption: "When life gives you limes, arrange them in a zesty flatlay and create a 'lime-light' masterpiece! 🍋✨",
-    likes: 349,
-    comments: 760,
-    timePosted: "1 min ago",
-    isGroupPost: false,
-  },
-  {
-    id: "2",
-    user: "akmalnsrllh",
-    location: "Bekasi",
-    userImage: "https://randomuser.me/api/portraits/men/1.jpg",
-    image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.oswego.edu%2Fcts%2Fsites%2Fwww.oswego.edu.cts%2Ffiles%2Fstyles%2Fpanopoly_image_original%2Fpublic%2Foswego_sunset.jpg%3Fitok%3D3pu5u00T&f=1&nofb=1&ipt=2ccda256c1e77bf36e72966e299ed829ca449077c82abe78750396a77002e9ba&ipo=images",
-    caption: "When life gives you limes, arrange them in a zesty flatlay and create a 'lime-light' masterpiece! 🍋✨",
-    likes: 349,
-    comments: 760,
-    timePosted: "1 min ago",
-    isGroupPost: true,
-    groupName: "Photography Enthusiasts",
-    groupImage: "https://randomuser.me/api/portraits/men/1.jpg",
-  },
-  {
-    id: "3",
-    user: "akmalnsrllh",
-    location: "Bekasi",
-    userImage: "https://randomuser.me/api/portraits/men/1.jpg",
-    image: "https://windows10spotlight.com/wp-content/uploads/2023/01/81a6e74c8adbf7f55406e8c4b80669d5.jpg",
-    caption: "When life gives you limes, arrange them in a zesty flatlay and create a 'lime-light' masterpiece! 🍋✨",
-    likes: 349,
-    comments: 760,
-    timePosted: "1 min ago",
-    isGroupPost: false,
-  },
-  {
-    id: "4",
-    user: "akmalnsrllh",
-    location: "Bekasi",
-    userImage: "https://randomuser.me/api/portraits/men/1.jpg",
-    image: "https://windows10spotlight.com/wp-content/uploads/2023/01/81a6e74c8adbf7f55406e8c4b80669d5.jpg",
-    caption: "When life gives you limes, arrange them in a zesty flatlay and create a 'lime-light' heheeeaaaaayedeygygduegudgeugduegtduegtudfgeugdekeabdhbeakdbedkabdkeabkdbadkajbed masterpiece! 🍋✨",
-    likes: 349,
-    comments: 760,
-    timePosted: "1 min ago",
-    isGroupPost: true,
-    groupName: "Nature Lovers",
-    groupImage: "https://randomuser.me/api/portraits/men/1.jpg",
-  },
-];
+interface Post {
+  id: string;
+  user: string;
+  location: string;
+  userImage: string;
+  image: string;
+  caption: string;
+  likes: number;
+  comments: number;
+  timePosted: string;
+  isGroupPost: boolean;
+  groupName: string;
+  groupImage: string;
+}
 
-const FeedScreen = () => {
+const FeedScreen: React.FC = () => {
   const { theme } = useTheme(); // Get theme from context
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Function to format the dummy data to match your PostCard component requirements
+  const formatPostData = (dummyData: any[]): Post[] => {
+    return dummyData.map(post => {
+      const user = post.user || {};
+      const group = post.group || null;
+
+      return {
+        id: post.id,
+        user: `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Unknown User',
+        location: post.locationName || '',
+        userImage: user.profilePictureUrl || "https://randomuser.me/api/portraits/men/1.jpg", // Default
+        image: post.image || "https://windows10spotlight.com/wp-content/uploads/2023/01/81a6e74c8adbf7f55406e8c4b80669d5.jpg", // Default
+        caption: post.content || '',
+        likes: post.likesCount || 0,
+        comments: post.commentsCount || 0,
+        timePosted: formatTimeAgo(post.createdAt),
+        isGroupPost: !!post.groupId,
+        groupName: group ? group.name || '' : '',
+        groupImage: group ? group.profilePictureUrl || '' : '',
+      };
+    });
+  };
+
+  // Load dummy data instead of fetching from API
+  const loadDummyPosts = (): void => {
+    try {
+      setLoading(true);
+      // Simulate network delay
+      setTimeout(() => {
+        const formattedPosts: Post[] = formatPostData(dummyPosts);
+        setPosts(formattedPosts);
+        setError(null);
+        setLoading(false);
+      }, 800); // 800ms delay to simulate loading
+    } catch (err) {
+      console.log('Error loading posts:', err);
+      setError('Failed to load posts. Please try again later.');
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadDummyPosts();
+  }, []);
+
+  // Handle pull-to-refresh functionality
+  const handleRefresh = (): void => {
+    loadDummyPosts();
+  };
+
+  // Render each post item
+  const renderPostItem: ListRenderItem<Post> = ({ item }) => (
+    <PostCard
+      post={item}
+    />
+  );
+
+  // Loading state
+  if (loading && posts.length === 0) {
+    return (
+      <View style={[FeedStyles.container, FeedStyles.centerContent, { backgroundColor: theme.background }]}>
+        <ActivityIndicator size="large" color={theme.primary} />
+      </View>
+    );
+  }
+
+  // Error state
+  if (error && posts.length === 0) {
+    return (
+      <View style={[FeedStyles.container, FeedStyles.centerContent, { backgroundColor: theme.background }]}>
+        <Text style={{ color: theme.accent }}>{error}</Text>
+      </View>
+    );
+  }
 
   return (
-      <View style={[styles.container,{backgroundColor:theme.background}]}> 
-
-        <FlatList
+    <View style={[FeedStyles.container, { backgroundColor: theme.background }]}>
+      <FlatList
         data={posts}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <PostCard post={item} />}
+        renderItem={renderPostItem}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.feedContent}
+        contentContainerStyle={FeedStyles.feedContent}
+        refreshing={loading}
+        onRefresh={handleRefresh}
       />
-
-      </View  >
-    
-   
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  feedContent: {
-    paddingHorizontal: 10,
-    paddingTop: 10,  // Ensuring there's no extra space at the top
-    flexGrow: 1,  // Ensuring the content stretches to the top-start
-  },
-});
 
 export default FeedScreen;

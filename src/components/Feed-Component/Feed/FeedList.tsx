@@ -71,9 +71,7 @@ export const FeedList: React.FC<FeedListProps> = ({ navigation }) => {
       // Simulate network delay
       setTimeout(() => {
         // Simulate random error for demonstration (1 in 4 chance)
-        if (Math.random() < 0.25 && retryCount < 2) {
-          throw new Error('Network request failed');
-        }
+        
         
         const formattedPosts: Post[] = formatPostData(dummyPosts);
         setPosts(formattedPosts);

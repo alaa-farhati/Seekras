@@ -87,6 +87,7 @@ const CompleteProfileContent: React.FC<CompleteProfileContentProps> = ({
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
       <View style={CompleteProfileStyles.headerWrapper}>
+        {/* //header */}
         <View style={CompleteProfileStyles.header}>
           <TouchableOpacity onPress={handlePrevious} disabled={currentStep === 1}>
             <Ionicons 

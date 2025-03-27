@@ -19,7 +19,7 @@
       location: 'Brooklyn, NY',
       postedTime: '2 hours ago',
       isSponsored: true,
-      category: 'electronics',
+      category: 'camping',
     },
     {
       id: '2',
@@ -38,7 +38,7 @@
       image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F81X3rtwZSVL._AC_SL1500_.jpg&f=1&nofb=1&ipt=403529e494703a3b8146a7e839159f87b88110f3e07c3416361e823a3ff55f0f&ipo=images',
       location: 'Manhattan, NY',
       postedTime: 'Yesterday',
-      category: 'vehicles',
+      category: 'camping',
     },
     {
       id: '4',
@@ -47,56 +47,9 @@
       image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F30%2Fa8%2Fa2%2F30a8a2e649835a42668e8f1e801fa975.jpg&f=1&nofb=1&ipt=d725d8e14832a84ed96cbbdcc017a52a95d3b8b742b16ec928629d2c28294dc4&ipo=images',
       location: 'Bronx, NY',
       postedTime: '2 days ago',
-      category: 'electronics',
-    },
-    {
-      id: '5',
-      title: 'Gaming PC - RTX 3080, i9 Processor',
-      price: 1500,
-      image: 'https://randomuser.me/api/portraits/men/5.jpg',
-      location: 'Staten Island, NY',
-      postedTime: '3 days ago',
-      category: 'electronics',
-    },
-    {
-      id: '6',
-      title: 'Dining Table with 6 Chairs',
-      price: 450,
-      image: 'https://randomuser.me/api/portraits/women/6.jpg',
-      location: 'Brooklyn, NY',
-      postedTime: '4 days ago',
-      category: 'furniture',
-    },
-    {
-      id: '7',
-      title: 'Sony PlayStation 5 - Brand New',
-      price: 499,
-      image: 'https://randomuser.me/api/portraits/men/7.jpg',
-      location: 'Manhattan, NY',
-      postedTime: '5 days ago',
-      isSponsored: true,
-      category: 'electronics',
-    },
-    {
-      id: '8',
-      title: 'Vintage Vinyl Record Collection',
-      price: 250,
-      image: 'https://randomuser.me/api/portraits/women/8.jpg',
-      location: 'Queens, NY',
-      postedTime: '1 week ago',
-      category: 'hobbies',
-    },
-    {
-      id: '9',
-      title: '4-Person Camping Tent - Waterproof',
-      price: 129,
-      image: 'https://randomuser.me/api/portraits/men/35.jpg', // Camping product with man image
-      location: 'Upstate NY',
-      postedTime: 'Just now',
-      isSponsored: false,
-      isSaved: true,
       category: 'camping',
     },
+    
   ];
   export const CONDITIONS = ["New", "Like New", "Good", "Fair", "Poor"];
   

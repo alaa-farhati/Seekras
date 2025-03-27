@@ -12,7 +12,7 @@ import {
   Alert
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import CustomButton from '../../components/Reusables-Component/CustomButton';
 import { Icon } from '../../assets/Icons/Index';
 import {styles} from '../../styles/Profile-Styles/EditProfile';
